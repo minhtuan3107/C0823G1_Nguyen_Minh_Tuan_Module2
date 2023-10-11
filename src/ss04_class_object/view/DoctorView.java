@@ -3,13 +3,13 @@ package ss04_class_object.view;
 import ss04_class_object.model.Doctor;
 import ss04_class_object.repository.DoctorRepo;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class DoctorView {
+    List<Doctor> doctorList = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
     DoctorRepo doctorRepo = new DoctorRepo();
     public void showMenu(){
@@ -32,8 +32,7 @@ public class DoctorView {
         Doctor doctor = new Doctor(name,old,location,email,phone,work);
         return doctor;
     }
-    public void display(){
-        List<Doctor> doctorList = new ArrayList<>();
+    public void display(List<Doctor> doctorList){
         if(doctorList.size() == 0){
             System.out.println("Danh sách rỗng");
         }else{
@@ -43,7 +42,6 @@ public class DoctorView {
         }
     }
     public String choiceWork(){
-        do{
             try{
                 System.out.println("Chọn vị trí làm việc");
                 System.out.println("1. Y tá");
@@ -64,6 +62,6 @@ public class DoctorView {
             }catch (NumberFormatException e){
                 System.out.println("Vui lòng nhập số");
             }
-        }while (true);
+            return "Null";
     }
 }

@@ -13,7 +13,12 @@ public class DoctorRepo implements IDoctorRepo {
     public List<String> convertToString(List<Doctor> doctorList) {
         List<String> stringList = new ArrayList<>();
         for (Doctor doctor : doctorList) {
-            stringList.add(doctor.getName() + COMA + doctor.getOld() + COMA + doctor.getLocation() + COMA + doctor.getEmail() + doctor.getPhone() + COMA + doctor.getWorkPosition());
+            stringList.add(doctor.getName() + COMA
+                    + doctor.getOld() + COMA
+                    + doctor.getLocation() + COMA
+                    + doctor.getEmail() + COMA
+                    + doctor.getPhone() + COMA
+                    + doctor.getWorkPosition());
         }
         return stringList;
     }
@@ -31,7 +36,7 @@ public class DoctorRepo implements IDoctorRepo {
         List<String> strings = ReadAndWrite.read(FILE);
         String[] strArr = null;
         for (String str : strings) {
-            strArr = str.split("");
+            strArr = str.split(",");
             doctorList.add(new Doctor(strArr[0], Integer.parseInt(strArr[1]), strArr[2], strArr[3], Integer.parseInt(strArr[4]), strArr[5]));
         }
         return doctorList;

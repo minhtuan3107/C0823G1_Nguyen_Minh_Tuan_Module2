@@ -1,6 +1,6 @@
 package ss17_binary_file_test.controller;
 
-import ss17_binary_file_test.model.Spend;
+import ss16_io_text_file.model.Spend;
 
 import java.util.List;
 

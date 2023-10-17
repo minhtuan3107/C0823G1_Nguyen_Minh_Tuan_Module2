@@ -1,16 +1,16 @@
 package ss17_binary_file_test.view;
 
-import ss17_binary_file_test.controller.ISpendController;
-import ss17_binary_file_test.controller.SpendController;
-import ss17_binary_file_test.exception.UniqueIDException;
-import ss17_binary_file_test.model.Spend;
+import ss16_io_text_file.controller.ISpendController;
+import ss16_io_text_file.controller.SpendController;
+import ss16_io_text_file.exception.UniqueIDException;
+import ss16_io_text_file.model.Spend;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class SpendView {
-    ISpendController spendController = new SpendController();
-    Scanner scanner = new Scanner(System.in);
+    private final ISpendController spendController = new SpendController();
+    private final Scanner scanner = new Scanner(System.in);
 
     public void showMenu() {
         System.out.println("Quản lý chi tiêu");

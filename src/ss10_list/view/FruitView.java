@@ -45,15 +45,10 @@ public class FruitView {
         System.out.println("4. Thoát");
     }
 
-    public boolean checkStatus() {
-
-        return false;
-    }
-
     public String inputName() {
         List<Fruit> fruitList = fruitController.getList();
         do {
-            System.out.println("Nhập tên cần sửa/ xóa");
+            System.out.println("Nhập tên cần xóa");
             String name = scanner.nextLine();
             for (Fruit fruit : fruitList) {
                 if (fruit.getNameFruit().equals(name)) {

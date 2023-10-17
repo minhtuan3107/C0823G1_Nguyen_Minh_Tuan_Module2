@@ -1,26 +1,26 @@
 package ss17_binary_file_test.repository;
 
-import ss17_binary_file_test.Utils.ReadAndWrite;
-import ss17_binary_file_test.Utils.ReadAndWriteBinary;
-import ss17_binary_file_test.model.Spend;
+import ss16_io_text_file.Utils.ReadAndWrite;
+import ss16_io_text_file.model.Spend;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpendRepo implements ISpendRepo {
-    private final String FILE = "D:\\module2Again\\src\\ss17_binary_file\\Utils\\data1";
+    private final String FILE = "D:\\module2Again\\src\\ss16_io_text_file\\Utils\\data";
     private final String COMMA = ",";
 
     @Override
     public void add(Spend spend) {
-        List<Spend> spendList = getList();
+        List<Spend> spendList = new ArrayList<>();
         spendList.add(spend);
-        ReadAndWriteBinary.writeFile(spendList, FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE);
     }
 
     @Override
     public List<Spend> getList() {
-        List<Spend> spendList = ReadAndWriteBinary.readFile(FILE);
+        List<String> strings = ReadAndWrite.read(FILE);
+        List<Spend> spendList = convertToObj(strings);
         return spendList;
     }
 
@@ -33,7 +33,7 @@ public class SpendRepo implements ISpendRepo {
                 break;
             }
         }
-        ReadAndWriteBinary.writeFile(spendList, FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE);
     }
 
     @Override
@@ -45,9 +45,10 @@ public class SpendRepo implements ISpendRepo {
                 spendList.get(i).setDate(spend.getDate());
                 spendList.get(i).setPrice(spend.getPrice());
                 spendList.get(i).setDes(spend.getDes());
-                ReadAndWriteBinary.writeFile(spendList, FILE);
+                ReadAndWrite.write(convertToString(spendList), FILE);
             }
         }
+
     }
 
     @Override

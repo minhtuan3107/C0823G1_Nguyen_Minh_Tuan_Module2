@@ -1,8 +1,8 @@
 package ss17_binary_file_test.service;
 
-import ss17_binary_file_test.model.Spend;
-import ss17_binary_file_test.repository.ISpendRepo;
-import ss17_binary_file_test.repository.SpendRepo;
+import ss16_io_text_file.model.Spend;
+import ss16_io_text_file.repository.ISpendRepo;
+import ss16_io_text_file.repository.SpendRepo;
 
 import java.util.List;
 

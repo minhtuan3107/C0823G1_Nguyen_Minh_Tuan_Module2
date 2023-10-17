@@ -1,8 +1,8 @@
 package ss17_binary_file_test.controller;
 
-import ss17_binary_file_test.model.Spend;
-import ss17_binary_file_test.service.ISpendService;
-import ss17_binary_file_test.service.SpendService;
+import ss16_io_text_file.model.Spend;
+import ss16_io_text_file.service.ISpendService;
+import ss16_io_text_file.service.SpendService;
 
 import java.util.List;
 

@@ -1,20 +1,20 @@
 package ss05_access_modifier;
 
-public class Abc {
+public class Company {
     private String name; //private để bao đóng
-    private int phone;//private để bao đóng
-    private String workingParts;//private để bao đóng
-    private String nameCompany;//private để bao đóng
+    private int phone;
+    private String workingParts;
+    private String nameCompany;
 
     @Override
     public String toString() {
         return "abc{" + "Tên '" + name + '\'' + ", SDT " + phone + ", Bộ phận làm việc '" + workingParts + '\'' + ", Tên công ty '" + nameCompany + '\'' + '}';
     }
 
-    public Abc() {
+    public Company() {
     }
 
-    public Abc(String name, int phone, String workingParts, String nameCompany) {
+    public Company(String name, int phone, String workingParts, String nameCompany) {
         this.name = name;
         this.phone = phone;
         this.workingParts = workingParts;
@@ -56,12 +56,12 @@ public class Abc {
 
     public static class Main { //Main sử dụng từ khóa static để truy cập trực tiếp
         public static void main(String[] args) {
-            Abc abc = new Abc(); // tạo 1 đối tượng mới
-            abc.setName("Tuan"); // Set thông tin cho đối tượng
-            abc.setPhone(0123123123);
-            abc.setWorkingParts("Giám đốc");
-            abc.setNameCompany("Abc");
-            System.out.println(abc);
+            Company company = new Company(); // tạo 1 đối tượng mới
+            company.setName("Tuan"); // Set thông tin đối tượng
+            company.setPhone(0123123123);
+            company.setWorkingParts("Giám đốc");
+            company.setNameCompany("Abc");
+            System.out.println(company);
         }
     }
 }

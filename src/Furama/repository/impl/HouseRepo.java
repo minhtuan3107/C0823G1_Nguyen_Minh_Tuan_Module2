@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class HouseRepo implements IHouseRepo {
     private final String COMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\Facility";
+    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataHouse";
 
     @Override
     public void add(House house) {

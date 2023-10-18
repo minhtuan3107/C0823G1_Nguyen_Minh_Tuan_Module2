@@ -2,9 +2,7 @@ package Furama.view;
 
 import Furama.controller.*;
 import Furama.controller.impl.*;
-import Furama.model.Customer;
-import Furama.model.Employee;
-import Furama.model.Villa;
+import Furama.model.*;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -32,7 +30,7 @@ public class FuramaView {
     }
 
     public void showMenuFacility() {
-        System.out.println("= Facility =");
+        System.out.println("= DataVilla =");
         System.out.println("1. Quản lý House");
         System.out.println("2. Quản lý Room");
         System.out.println("3. Quản lý Villa");
@@ -47,8 +45,10 @@ public class FuramaView {
                 choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
+                        displayMenuHouse();
                         break;
                     case 2:
+                        displayMenuRoom();
                         break;
                     case 3:
                         displayMenuVilla();
@@ -91,11 +91,81 @@ public class FuramaView {
         } while (true);
     }
 
+    public void displayMenuHouse() {
+        int choice;
+        do {
+            try {
+                showMenuHouse();
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        houseController.add(addHouse());
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        System.out.println("Vui lòng nhập từ 1 - 5");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
+
+    public void displayMenuRoom() {
+        int choice;
+        do {
+            try {
+                shoMenuRoom();
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        roomController.add(addRoom());
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        System.out.println("Vui lòng nhập từ 1 - 5");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
+
+    public void showMenuHouse() {
+        System.out.println("1. Thêm mới House");
+        System.out.println("2. Hiển thị House -- Đang update");
+        System.out.println("3. Xóa House -- Đang update");
+        System.out.println("4. Hiển thị danh sách House cần bảo trì -- Đang update");
+        System.out.println("5. Trở lại");
+    }
+
+    public void shoMenuRoom() {
+        System.out.println("1. Thêm mới Room");
+        System.out.println("2. Hiển thị Room -- Đang update");
+        System.out.println("3. Xóa room -- Đang update");
+        System.out.println("4. Hiển thị danh sách Room bảo trì -- Đang update");
+        System.out.println("5. Trở lại");
+    }
+
     public void showMenuVilla() {
         System.out.println("1. Thêm mới Villa");
-        System.out.println("2. Hiển thị Villa");
-        System.out.println("3. Xóa Villa");
-        System.out.println("4. Hiển thị danh sách Villa bảo trì");
+        System.out.println("2. Hiển thị Villa -- Đang update");
+        System.out.println("3. Xóa Villa -- Đang update");
+        System.out.println("4. Hiển thị danh sách Villa bảo trì -- Đang update");
         System.out.println("5. Trở lại");
     }
 
@@ -177,16 +247,14 @@ public class FuramaView {
     }
 
     public boolean patternMatches(String check, String regex) {
-        return Pattern.compile(regex)
-                .matcher(check)
-                .matches();
+        return Pattern.compile(regex).matcher(check).matches();
     }
 
     //Employee
     public String searchName() {
         System.out.println("Nhap ten can tim");
-        String nameFind = scanner.nextLine();
-        return nameFind;
+        String findName = checkEmpty();
+        return findName;
     }
 
     public void displayEmployee(List<Employee> employees) {
@@ -256,16 +324,17 @@ public class FuramaView {
     }
 
     public int inputWage(String location) {
-        if (location.equals("Lễ tân")) {
-            return 7000000;
-        } else if (location.equals("Phục vụ")) {
-            return 8000000;
-        } else if (location.equals("Chuyên viên")) {
-            return 9000000;
-        } else if (location.equals("Giám sát")) {
-            return 10000000;
-        } else if (location.equals("Quản lý")) {
-            return 15000000;
+        switch (location) {
+            case "Lễ tân":
+                return 7000000;
+            case "Phục vụ":
+                return 8000000;
+            case "Chuyên viên":
+                return 9000000;
+            case "Giám sát":
+                return 10000000;
+            case "Quản lý":
+                return 15000000;
         }
         return 50000000;
     }
@@ -274,7 +343,7 @@ public class FuramaView {
         String idEdit;
         do {
             System.out.println("Nhập ID cần sửa");
-            idEdit = scanner.nextLine();
+            idEdit = checkEmpty();
             if (!checkIdInput(idEdit)) {
                 return idEdit;
             } else {
@@ -320,7 +389,7 @@ public class FuramaView {
         String idNumberCheck;
         String regexPhone = "^[0-9]{9,12}$";
         do {
-            idNumberCheck = scanner.nextLine();
+            idNumberCheck = checkEmpty();
             if (patternMatches(idNumberCheck, regexPhone)) {
                 return Integer.parseInt(idNumberCheck);
             } else {
@@ -381,7 +450,7 @@ public class FuramaView {
         String email;
         String regexEmail = "^[\\w-\\.]+[0-9]+@(gmail\\.)+[\\w-]{3}$";
         do {
-            email = scanner.nextLine();
+            email = checkEmpty();
             if (patternMatches(email, regexEmail)) {
                 return email;
             } else {
@@ -394,7 +463,7 @@ public class FuramaView {
         String phone;
         String regexPhone = "^(0){1}[3|5|7|8|9]{1}[0-9]{8}$";
         do {
-            phone = scanner.nextLine();
+            phone = checkEmpty();
             if (patternMatches(phone, regexPhone)) {
                 return Integer.parseInt(phone);
             } else {
@@ -407,7 +476,7 @@ public class FuramaView {
         String birthday;
         do {
             try {
-                birthday = scanner.nextLine();
+                birthday = checkEmpty();
                 if (checkBirthday(birthday)) {
                     return birthday;
                 } else {
@@ -425,7 +494,7 @@ public class FuramaView {
         String[] arr;
         int count;
         do {
-            nameCheck = scanner.nextLine();
+            nameCheck = checkEmpty();
             count = 0;
             arr = nameCheck.split(" ");
             for (int i = 0; i < arr.length; i++) {
@@ -453,7 +522,7 @@ public class FuramaView {
 
     public boolean checkStatus() {
         String check = scanner.nextLine();
-        if (check.toLowerCase().equals("y")) {
+        if (check.equalsIgnoreCase("y")) {
             return true;
         } else {
             return false;
@@ -464,7 +533,7 @@ public class FuramaView {
         System.out.println("Nhập ID cần xóa");
         String idDelete;
         do {
-            idDelete = scanner.nextLine();
+            idDelete = checkEmpty();
             if (!(checkIdInput(idDelete))) {
                 System.out.println("Bạn có muốn xóa không y/n");
                 if (checkStatus()) {
@@ -481,7 +550,7 @@ public class FuramaView {
         String idCheck;
         String regexId = "^(NV-)+[0-9]{4}$";
         do {
-            idCheck = scanner.nextLine();
+            idCheck = checkEmpty();
             if (patternMatches(idCheck, regexId)) {
                 if (checkIdInput(idCheck)) {
                     return idCheck;
@@ -526,7 +595,7 @@ public class FuramaView {
                         customerController.delete(deleteIdCustomer());
                         break;
                     case 5:
-                        customerController.search(findName());
+                        customerController.search(searchName());
                         break;
                     case 6:
                         return;
@@ -568,7 +637,7 @@ public class FuramaView {
         System.out.println("Chọn loại khách hàng");
         String type = choiceTypeCustomer();
         System.out.println("Nhập địa chỉ");
-        String address = scanner.nextLine();
+        String address = checkEmpty();
         System.out.println("Bạn có muốn sửa không y/n ");
         if (!checkStatus()) {
             System.out.println("Sửa thành công");
@@ -591,16 +660,10 @@ public class FuramaView {
         return null;
     }
 
-    public String findName() {
-        System.out.println("Nhập tên cần tìm");
-        String nameFind = scanner.nextLine();
-        return nameFind;
-    }
-
     public String checkIdEditCustomer() {
         String id;
         do {
-            id = scanner.nextLine();
+            id = checkEmpty();
             if (!checkIdCustomer(id)) {
                 return id;
             } else {
@@ -627,7 +690,7 @@ public class FuramaView {
         System.out.println("Chọn loại khách hàng");
         String type = choiceTypeCustomer();
         System.out.println("Nhập địa chỉ");
-        String address = scanner.nextLine();
+        String address = checkEmpty();
         Customer customer = new Customer(idCustomer, name, birthday, gender, idNumber, phone, email, type, address);
         System.out.println("Thêm mới khách hàng customer có thông tin : " + customer + " thành công");
         return customer;
@@ -644,16 +707,16 @@ public class FuramaView {
         return true;
     }
 
-    public String checkInputIdCustomer() {
-        String id = scanner.nextLine();
-        do {
-            if (checkIdCustomer(id)) {
-                return id;
-            } else {
-                System.out.println("Vui lòng nhập lại ID đã tồn tại");
-            }
-        } while (true);
-    }
+//    public String checkInputIdCustomer() {
+//        String id = checkEmpty();
+//        do {
+//            if (checkIdCustomer(id)) {
+//                return id;
+//            } else {
+//                System.out.println("Vui lòng nhập lại ID đã tồn tại");
+//            }
+//        } while (true);
+//    }
 
     public String choiceTypeCustomer() {
         int choice;
@@ -689,7 +752,7 @@ public class FuramaView {
         String idCheck;
         String regexId = "^(KH-)+[0-9]{4}$";
         do {
-            idCheck = scanner.nextLine();
+            idCheck = checkEmpty();
             if (patternMatches(idCheck, regexId)) {
                 if (checkIdInput(idCheck)) {
                     return idCheck;
@@ -721,8 +784,7 @@ public class FuramaView {
         int areaPool = areaCheck();
         System.out.println("Nhập số tầng");
         int floor = checkFloor();
-        Villa villa = new Villa(id, name, area, price, people, type, standard, areaPool, floor);
-        return villa;
+        return new Villa(id, name, area, price, people, type, standard, areaPool, floor);
     }
 
     public int checkFloor() {
@@ -848,9 +910,9 @@ public class FuramaView {
 
     public String nameServiceCheck() {
         String nameCheck;
-        String regexId = "^[A-Z]{1}[a-z]{1,100}$";
+        String regexId = "^([A-Z])[a-z ]+$";
         do {
-            nameCheck = scanner.nextLine();
+            nameCheck = checkEmpty();
             if (patternMatches(nameCheck, regexId)) {
                 return nameCheck;
             } else {
@@ -863,11 +925,108 @@ public class FuramaView {
         String idCheck;
         String regexId = "^(SVVL-)+[0-9]{1}";
         do {
-            idCheck = scanner.nextLine();
+            idCheck = checkEmpty();
             if (patternMatches(idCheck, regexId)) {
                 return idCheck;
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng SVVL-1");
+            }
+        } while (true);
+    }
+
+    public Room addRoom() {
+        System.out.println("Nhập ID room");
+        String roomId = checkIdRoom();
+        System.out.println("Nhập tên dịch vụ");
+        String name = nameServiceCheck();
+        System.out.println("Nhập diện tích sử dụng");
+        int area = areaCheck();
+        System.out.println("Nhập chi phí thuê");
+        int price = checkPrice();
+        System.out.println("Nhập số lượng người ở");
+        int people = checkPeople();
+        System.out.println("Chọn kiểu thuê");
+        String type = choiceType();
+        System.out.println("Chọn dịch vụ miễn phí");
+        String serviceFree = choiceServiceFree();
+        return new Room(roomId, name, area, price, people, type, serviceFree);
+    }
+
+    public String choiceServiceFree() {
+        int choice;
+        do {
+            try {
+                System.out.println("1.Nuoc uong mien phi");
+                System.out.println("2.Phuong tien di lai mien phi");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        return "Nuoc uong mien phi";
+                    case 2:
+                        return "Phuong tien di lai mien phi";
+                    default:
+                        System.out.println("Nhập 1 - 2");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
+
+    public String checkIdRoom() {
+        String idRoom;
+        String regexId = "^(SVRO-)+[0-9]{1}";
+        do {
+            idRoom = checkEmpty();
+            if (patternMatches(idRoom, regexId)) {
+                return idRoom;
+            } else {
+                System.out.println("Vui lòng nhập đúng định dạng SVRO-1");
+            }
+        } while (true);
+    }
+
+    public String checkIdHouse() {
+        String idHouse;
+        String regexId = "^(SVHO-)+[0-9]{1}";
+        do {
+            idHouse = checkEmpty();
+            if (patternMatches(idHouse, regexId)) {
+                return idHouse;
+            } else {
+                System.out.println("Vui lòng nhập đúng định dạng SVHO-1");
+            }
+        } while (true);
+    }
+
+    public House addHouse() {
+        System.out.println("Nhập mã dịch vụ House");
+        String idHouse = checkIdHouse();
+        System.out.println("Nhập tên dịch vụ");
+        String name = nameServiceCheck();
+        System.out.println("Nhập diện tích sử dụng");
+        int area = areaCheck();
+        System.out.println("Nhập chi phí thuê");
+        int price = checkPrice();
+        System.out.println("Nhập số lượng người");
+        int people = checkPeople();
+        System.out.println("Chọn kiểu thuê");
+        String type = choiceType();
+        System.out.println("Chọn tiêu chuẩn phòng");
+        String standard = choiceStandard();
+        System.out.println("Nhập số tầng");
+        int floor = checkFloor();
+        return new House(idHouse, name, area, price, people, type, standard, floor);
+    }
+
+    public String checkEmpty() {
+        String str;
+        do {
+            str = scanner.nextLine();
+            if (!(str.isEmpty())) {
+                return str;
+            } else {
+                System.out.println("Vui lòng nhập không để rỗng");
             }
         } while (true);
     }

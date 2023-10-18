@@ -1,7 +1,6 @@
 package Furama.repository.impl;
 
 import Furama.Utils.ReadAndWrite;
-import Furama.model.Facility;
 import Furama.model.Villa;
 import Furama.repository.IVillaRepo;
 
@@ -12,7 +11,7 @@ import java.util.Map;
 
 public class VillaRepo implements IVillaRepo {
     private final String COMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\Facility";
+    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataVilla";
     private int count;
 
     @Override
@@ -20,33 +19,6 @@ public class VillaRepo implements IVillaRepo {
         Map<String, Villa> villaMap = convertToE(ReadAndWrite.read(FILE));
         villaMap.put(villa.getId(), villa);
         ReadAndWrite.write(convertToString(villaMap), FILE, true);
-    }
-
-    @Override
-    public void delete(String id) {
-        Map<String, Villa> villaMap = convertToE(ReadAndWrite.read(FILE));
-        for (Map.Entry<String, Villa> value : villaMap.entrySet()) {
-            if (id.equals(value.getValue().getId())) {
-                villaMap.remove(value.getKey());
-                break;
-            }
-        }
-    }
-
-    @Override
-    public LinkedHashMap<Facility, Villa> getList() {
-        return null;
-    }
-
-    @Override
-    public void edit(String id, Villa villa) {
-        Map<String, Villa> villaMap = convertToE(ReadAndWrite.read(FILE));
-        for (Map.Entry<String, Villa> value : villaMap.entrySet()) {
-            if (id.equals(value.getValue().getId())) {
-                villaMap.put(id, villa);
-                break;
-            }
-        }
     }
 
     public List<String> convertToString(Map<String, Villa> e) {

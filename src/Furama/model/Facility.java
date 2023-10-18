@@ -70,7 +70,7 @@ public class Facility {
 
     @Override
     public String toString() {
-        return "Facility{" +
+        return "DataVilla{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", acreage=" + acreage +

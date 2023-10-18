@@ -9,7 +9,7 @@ import java.util.List;
 
 public class EmployeeRepo implements IEmployeeRepo {
     private final String COMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\Data";
+    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataEmployee";
 
     @Override
     public void edit(String id, Employee employee) {

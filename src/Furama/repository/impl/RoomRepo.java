@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class RoomRepo implements IRoomRepo {
     private final String COMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\Facility";
+    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataRoom";
     @Override
     public void add(Room room) {
         Map<String, Room> roomList = convertToE(ReadAndWrite.read(FILE));

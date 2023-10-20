@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FruitView {
-    private Scanner scanner = new Scanner(System.in);
-    private IFruitController fruitController = new FruitController();
+    private final Scanner scanner = new Scanner(System.in);
+    private final IFruitController fruitController = new FruitController();
 
     public void displayMenu() {
         int choice;
@@ -28,9 +28,12 @@ public class FruitView {
                         fruitController.delete(inputName());
                         break;
                     case 4:
+                        editFruit();
+                        break;
+                    case 5:
                         return;
                     default:
-                        System.out.println("Nhập từ 1 -4");
+                        System.out.println("Nhập từ 1 -5");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
@@ -39,10 +42,72 @@ public class FruitView {
     }
 
     public void showMenu() {
+        System.out.println("== Quản lý trái cây ==");
         System.out.println("1. Thêm");
         System.out.println("2. Hiển thị");
         System.out.println("3. Xóa");
+        System.out.println("4. Sửa");
         System.out.println("4. Thoát");
+    }
+
+    public String checkNameEdit() {
+        String id;
+        do {
+            id = scanner.nextLine();
+            List<Fruit> fruitList = fruitController.getList();
+            for (Fruit fruit : fruitList) {
+                if (fruit.getNameFruit().equals(id)) {
+                    return id;
+                }
+            }
+            System.out.println("ID khong ton tai vui long nhap lai");
+        } while (true);
+    }
+
+
+    public void editFruit() {
+        System.out.println("Nhập tên trái cây muốn sửa");
+        String name = checkNameEdit();
+        System.out.println("Nhập loại trái cây");
+        String type = checkEmpty();
+        System.out.println("Nhập ngày sản xuất");
+        String date = scanner.nextLine();
+        System.out.println("Nhập hạn sử dụng");
+        String expiry = scanner.nextLine();
+        System.out.println("Nhập xuất sứ");
+        String origin = scanner.nextLine();
+        System.out.println("Nhập giá tiền");
+        String price = scanner.nextLine();
+        System.out.println("Bạn có muốn sửa không ? y/n");
+        if (confirm()) {
+            System.out.println("Sửa thành công");
+            Fruit fruit = new Fruit(name, type, date, expiry, origin, price);
+            fruitController.edit(name, fruit);
+        } else {
+            System.out.println("Bạn không sửa");
+        }
+    }
+
+    public String checkEmpty() {
+        String check;
+        do {
+            check = scanner.nextLine();
+            if (!(check.isEmpty())) {
+                return check;
+            } else {
+                System.out.println("Vui lòng nhập không được để rỗng");
+            }
+        } while (true);
+    }
+
+    public boolean confirm() {
+        String confirm = scanner.nextLine();
+        do {
+            if (confirm.equalsIgnoreCase("y")) {
+                return true;
+            }
+            return false;
+        } while (true);
     }
 
     public String inputName() {
@@ -53,36 +118,38 @@ public class FruitView {
             for (Fruit fruit : fruitList) {
                 if (fruit.getNameFruit().equals(name)) {
                     System.out.println("Bạn có muốn xóa không y/n");
-                    String check = scanner.nextLine();
-                    if (check.toLowerCase().equals("y")) {
+                    if (confirm()) {
+                        System.out.println("Xóa thành công");
                         return name;
+                    } else {
+                        System.out.println("Bạn không xóa");
                     }
-                } else {
-                    System.out.println("Tên không tồn tại vui lòng nhập lại");
                 }
             }
+            System.out.println("Tên không tồn tại vui lòng nhập lại");
         } while (true);
     }
 
+
     public Fruit add() {
-        System.out.println("Nhập tên");
-        String nameFruit = scanner.nextLine();
+        System.out.println("Nhập tên trái cây");
+        String nameFruit = checkEmpty();
         System.out.println("Nhập loại trái cây");
-        String typeFruit = scanner.nextLine();
+        String typeFruit = checkEmpty();
         System.out.println("Nhập ngày sản xuất");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập hạn sử dụng");
-        String exp = scanner.nextLine();
+        String exp = checkEmpty();
         System.out.println("Nhập xuất xứ");
-        String origin = scanner.nextLine();
+        String origin = checkEmpty();
         System.out.println("Nhập giá tiền");
-        String price = scanner.nextLine();
+        String price = checkEmpty();
         Fruit fruit = new Fruit(nameFruit, typeFruit, date, exp, origin, price);
         return fruit;
     }
 
     public void display(List<Fruit> fruitList) {
-        if (fruitList.size() == 0) {
+        if (fruitList.isEmpty()) {
             System.out.println("Danh sách trống");
         } else {
             for (Fruit fruit : fruitList) {

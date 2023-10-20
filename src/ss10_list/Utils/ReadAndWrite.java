@@ -28,10 +28,10 @@ public class ReadAndWrite {
         return stringList;
     }
 
-    public static void write(List<String> stringList, String path) {
+    public static void write(List<String> stringList, String path, boolean flag) {
         BufferedWriter bufferedWriter = null;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(path));
+            bufferedWriter = new BufferedWriter(new FileWriter(path, flag));
             for (String str : stringList) {
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();

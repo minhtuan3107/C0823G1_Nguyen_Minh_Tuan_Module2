@@ -6,6 +6,11 @@ import java.util.List;
 
 public interface IFruitController {
     List<Fruit> getList();
+
     void add(Fruit fruit);
+
     void delete(String name);
+
+    void edit(String name, Fruit fruit);
+
 }

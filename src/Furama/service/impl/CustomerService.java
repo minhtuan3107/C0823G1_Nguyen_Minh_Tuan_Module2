@@ -9,7 +9,7 @@ import Furama.service.ICustomerService;
 import java.util.List;
 
 public class CustomerService implements ICustomerService {
-    private ICustomerRepo customerRepo = new CustomerRepo();
+    private final ICustomerRepo customerRepo = new CustomerRepo();
 
     @Override
     public void edit(String id, Customer customer) {

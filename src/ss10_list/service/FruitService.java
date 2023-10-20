@@ -7,7 +7,7 @@ import ss10_list.repository.IFruitRepo;
 import java.util.List;
 
 public class FruitService implements IFruitService {
-   private IFruitRepo fruitRepo = new FruitRepo();
+    private final IFruitRepo fruitRepo = new FruitRepo();
 
     @Override
     public List<Fruit> getList() {
@@ -18,6 +18,12 @@ public class FruitService implements IFruitService {
     public void add(Fruit fruit) {
         fruitRepo.add(fruit);
     }
+
+    @Override
+    public void edit(String name, Fruit fruit) {
+        fruitRepo.edit(name, fruit);
+    }
+
     public void delete(String name) {
         fruitRepo.delete(name);
     }

@@ -6,7 +6,7 @@ import Furama.repository.impl.HouseRepo;
 import Furama.service.IHouseService;
 
 public class HouseService implements IHouseService {
-    private IHouseRepo houseRepo = new HouseRepo();
+    private final IHouseRepo houseRepo = new HouseRepo();
 
     @Override
     public void add(House house) {

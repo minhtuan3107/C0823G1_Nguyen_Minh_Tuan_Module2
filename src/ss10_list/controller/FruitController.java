@@ -23,4 +23,9 @@ public class FruitController implements IFruitController {
     public void delete(String name) {
         fruitService.delete(name);
     }
+
+    @Override
+    public void edit(String name, Fruit fruit) {
+        fruitService.edit(name, fruit);
+    }
 }

@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpendRepo implements ISpendRepo {
-    private final String FILE = "D:\\module2Again\\src\\ss16_io_text_file\\Utils\\data";
+    private final String FILE = "D:\\module2Again\\src\\ss16_io_text_file\\Utils\\data.txt";
     private final String COMMA = ",";
 
     @Override
     public void add(Spend spend) {
         List<Spend> spendList = new ArrayList<>();
         spendList.add(spend);
-        ReadAndWrite.write(convertToString(spendList), FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE, true);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SpendRepo implements ISpendRepo {
                 break;
             }
         }
-        ReadAndWrite.write(convertToString(spendList), FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE, false);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SpendRepo implements ISpendRepo {
                 spendList.get(i).setDate(spend.getDate());
                 spendList.get(i).setPrice(spend.getPrice());
                 spendList.get(i).setDes(spend.getDes());
-                ReadAndWrite.write(convertToString(spendList), FILE);
+                ReadAndWrite.write(convertToString(spendList), FILE, false);
             }
         }
 
@@ -76,7 +76,7 @@ public class SpendRepo implements ISpendRepo {
         List<String> strings = ReadAndWrite.read(FILE);
         List<Spend> spendList = convertToObj(strings);
         spendList.sort((o1, o2) -> Integer.parseInt(o1.getName()) > Integer.parseInt(o2.getName()) ? 1 : -1);
-        ReadAndWrite.write(convertToString(spendList), FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE, false);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class SpendRepo implements ISpendRepo {
         List<String> strings = ReadAndWrite.read(FILE);
         List<Spend> spendList = convertToObj(strings);
         spendList.sort((o1, o2) -> o1.getPrice() > o2.getPrice() ? -1 : 1);
-        ReadAndWrite.write(convertToString(spendList), FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE, false);
     }
 
     public List<String> convertToString(List<Spend> spendList) {

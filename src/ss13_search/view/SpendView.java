@@ -62,17 +62,12 @@ public class SpendView {
         do {
             id = Integer.parseInt(scanner.nextLine());
             List<Spend> spendList = spendController.getList();
-            int count = 0;
             for (Spend spend : spendList) {
                 if (spend.getId() == id) {
-                    count++;
+                    return id;
                 }
             }
-            if (count == 0) {
-                return id;
-            } else {
-                System.out.println("ID đã tồn tại vui lòng nhập lại");
-            }
+            System.out.println("ID không tồn tại vui lòng nhập lại");
         } while (true);
     }
 
@@ -80,27 +75,38 @@ public class SpendView {
         System.out.println("Nhập ID mới");
         int id = checkIdInput();
         System.out.println("Nhập tên mới");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         System.out.println("Nhập ngày tháng");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập giá tiền");
         int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập mô tả");
-        String des = scanner.nextLine();
+        String des = checkEmpty();
         Spend spend = new Spend(id, name, date, price, des);
         return spend;
+    }
+    public String checkEmpty(){
+        String check;
+        do{
+            check = scanner.nextLine();
+            if(!(check.isEmpty())){
+                return check;
+            }else {
+                System.out.println("Vui lòng nhập không được để trống");
+            }
+        }while (true);
     }
 
     public void edit() {
         int id = checkId();
         System.out.println("Nhập tên muốn sửa");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         System.out.println("Nhập ngày muốn sửa");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập số tiền muốn sửa");
         int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập mô tả");
-        String des = scanner.nextLine();
+        String des = checkEmpty();
         System.out.println("Bạn có muốn sửa y/n");
         confirm();
         if (confirm()) {
@@ -112,7 +118,7 @@ public class SpendView {
     }
 
     public boolean confirm() {
-        String check = scanner.nextLine();
+        String check = checkEmpty();
         if (check.toLowerCase().equals("y")) {
             return true;
         }
@@ -122,15 +128,18 @@ public class SpendView {
     public int checkId() {
         int id;
         do {
-            System.out.println("Nhập ID");
-            id = Integer.parseInt(scanner.nextLine());
-            List<Spend> spendList = spendController.getList();
-            for (Spend spend : spendList) {
-                if (spend.getId() == id) {
-                    return id;
-                } else {
-                    System.out.println("ID không tồn tại vui lòng nhập lại");
+            try {
+                System.out.println("Nhập ID");
+                id = Integer.parseInt(scanner.nextLine());
+                List<Spend> spendList = spendController.getList();
+                for (Spend spend : spendList) {
+                    if (spend.getId() == id) {
+                        return id;
+                    }
                 }
+                System.out.println("ID không tồn tại vui lòng nhập lại");
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
             }
         } while (true);
     }
@@ -143,7 +152,7 @@ public class SpendView {
 
     public String inputName() {
         System.out.println("Nhập tên");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         return name;
     }
 

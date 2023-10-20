@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpendRepo implements ISpendRepo {
-    private final String FILE = "D:\\module2Again\\src\\ss13_search\\Utils\\data";
+    private final String FILE = "D:\\module2Again\\src\\ss13_search\\Utils\\data.txt";
     private final String COMMA = ",";
 
     @Override
     public void add(Spend spend) {
         List<Spend> spendList = new ArrayList<>();
         spendList.add(spend);
-        ReadAndWrite.write(convertToString(spendList), FILE);
+        ReadAndWrite.write(convertToString(spendList), FILE, true);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SpendRepo implements ISpendRepo {
                 break;
             }
         }
-        ReadAndWrite.write(convertToString(spendList),FILE);
+        ReadAndWrite.write(convertToString(spendList),FILE, false);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SpendRepo implements ISpendRepo {
                 spendList.get(i).setDate(spend.getDate());
                 spendList.get(i).setPrice(spend.getPrice());
                 spendList.get(i).setDes(spend.getDes());
-                ReadAndWrite.write(convertToString(spendList), FILE);
+                ReadAndWrite.write(convertToString(spendList), FILE, false);
             }
         }
 

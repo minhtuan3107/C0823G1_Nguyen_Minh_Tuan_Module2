@@ -12,13 +12,18 @@ import java.util.Map;
 public class VillaRepo implements IVillaRepo {
     private final String COMA = ",";
     private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataVilla";
-    private int count;
 
     @Override
     public void add(Villa villa) {
         Map<String, Villa> villaMap = convertToE(ReadAndWrite.read(FILE));
         villaMap.put(villa.getId(), villa);
         ReadAndWrite.write(convertToString(villaMap), FILE, true);
+    }
+
+    public Map<String, Villa> getList() {
+        List<String> stringList = ReadAndWrite.read(FILE);
+        Map<String, Villa> villaMap = convertToE(stringList);
+        return villaMap;
     }
 
     public List<String> convertToString(Map<String, Villa> e) {
@@ -38,7 +43,7 @@ public class VillaRepo implements IVillaRepo {
     }
 
     public Map<String, Villa> convertToE(List<String> strings) {
-        Map<String, Villa> villas = new LinkedHashMap();
+        Map<String, Villa> villas = new LinkedHashMap<>();
         for (String str : strings) {
             if (str.isEmpty()) {
                 continue;

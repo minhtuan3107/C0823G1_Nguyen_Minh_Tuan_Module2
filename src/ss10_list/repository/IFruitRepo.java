@@ -8,4 +8,5 @@ public interface IFruitRepo {
     List<Fruit>getList();
     void add(Fruit fruit);
     void delete(String name);
+    void edit(String name, Fruit fruit);
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpendRepo implements ISpendRepo {
-    private final String FILE = "D:\\module2Again\\src\\ss17_binary_file\\Utils\\data.txt";
+    private final String FILE = "D:\\module2Again\\src\\ss17_binary_file\\Utils\\data.txt.txt";
     private final String COMMA = ",";
 
     @Override

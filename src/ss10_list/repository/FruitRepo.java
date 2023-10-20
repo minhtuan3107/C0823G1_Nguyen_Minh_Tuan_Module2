@@ -2,7 +2,6 @@ package ss10_list.repository;
 
 import ss10_list.Utils.ReadAndWrite;
 import ss10_list.model.Fruit;
-import ss10_list.view.FruitView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class FruitRepo implements IFruitRepo {
     public void add(Fruit fruit) {
         List<Fruit> fruitList = new ArrayList<>();
         fruitList.add(fruit);
-        ReadAndWrite.write(convertToString(fruitList), FILE);
+        ReadAndWrite.write(convertToString(fruitList), FILE, true);
     }
 
     @Override
@@ -41,7 +40,24 @@ public class FruitRepo implements IFruitRepo {
                 break;
             }
         }
-        ReadAndWrite.write(convertToString(fruitList), FILE);
+        ReadAndWrite.write(convertToString(fruitList), FILE, false);
+    }
+
+    @Override
+    public void edit(String name, Fruit fruit) {
+        List<Fruit> fruitList = getList();
+        for (Fruit fruit1 : fruitList) {
+            if (fruit1.getNameFruit().equals(name)) {
+                fruit1.setNameFruit(fruit.getNameFruit());
+                fruit1.setTypeFruit(fruit.getTypeFruit());
+                fruit1.setDate(fruit.getDate());
+                fruit1.setExpiry(fruit.getExpiry());
+                fruit1.setOrigin(fruit.getOrigin());
+                fruit1.setPrice(fruit.getPrice());
+                ReadAndWrite.write(convertToString(fruitList), FILE, false);
+                break;
+            }
+        }
     }
 
     public List<String> convertToString(List<Fruit> fruitList) {

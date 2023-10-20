@@ -6,7 +6,7 @@ import Furama.repository.impl.VillaRepo;
 import Furama.service.IVillaService;
 
 public class VillaService implements IVillaService {
-    private IVillaRepo villaRepo = new VillaRepo();
+    private final IVillaRepo villaRepo = new VillaRepo();
 
     @Override
     public void add(Villa villa) {

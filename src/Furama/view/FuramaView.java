@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 public class FuramaView {
@@ -300,7 +301,7 @@ public class FuramaView {
     public Employee addEmployee() {
         System.out.println("Nhập ID employee");
         String idEmployee = checkIdEmployee();
-        System.out.println("Nhập tên Employee");
+        System.out.println("Nhập họ và tên Employee");
         String nameEmployee = checkName();
         System.out.println("Nhập birthday Employee");
         String birthdayEmployee = checkBirthday();
@@ -497,15 +498,15 @@ public class FuramaView {
             nameCheck = checkEmpty();
             count = 0;
             arr = nameCheck.split(" ");
-            for (int i = 0; i < arr.length; i++) {
-                if (patternMatches(arr[i], regexName)) {
+            for (String s : arr) {
+                if (patternMatches(s, regexName)) {
                     count++;
                 }
             }
-            if (count == arr.length) {
+            if (count == arr.length && arr.length >= 2 && arr.length <= 5) {
                 return nameCheck;
             } else {
-                System.out.println("Vui lòng nhập lại");
+                System.out.println("Vui lòng nhập lại họ và tên");
             }
         } while (true);
     }
@@ -672,10 +673,31 @@ public class FuramaView {
         } while (true);
     }
 
+    public String checkIdCustomer1() {
+        List<Customer> customerList = customerController.getList();
+        int idRandom;
+        String idCustomer;
+        idRandom = ThreadLocalRandom.current().nextInt(1, 2);
+        idCustomer = "KH-" + idRandom;
+        int count = 0;
+        for (Customer customer : customerList) {
+            if (customer.getId().equals(idCustomer)) {
+                System.out.println("ID đã full vui lòng truy cập lại sau");
+                count++;
+                break;
+            }
+        }
+        if (count < 1) {
+            checkIdCustomer1();
+        }
+        return idCustomer;
+    }
+
     public Customer addCustomer() {
         System.out.println("Nhập ID khách hàng");
-        String idCustomer = checkIdCustomer();
-        System.out.println("Nhập tên khách hàng");
+        String idCustomer = checkIdCustomer1();
+        System.out.println("ID của bạn là: " + idCustomer);
+        System.out.println("Nhập họ và tên khách hàng");
         String name = checkName();
         System.out.println("Nhập birthday khách hàng");
         String birthday = checkBirthday();
@@ -707,16 +729,6 @@ public class FuramaView {
         return true;
     }
 
-//    public String checkInputIdCustomer() {
-//        String id = checkEmpty();
-//        do {
-//            if (checkIdCustomer(id)) {
-//                return id;
-//            } else {
-//                System.out.println("Vui lòng nhập lại ID đã tồn tại");
-//            }
-//        } while (true);
-//    }
 
     public String choiceTypeCustomer() {
         int choice;
@@ -1021,10 +1033,18 @@ public class FuramaView {
 
     public String checkEmpty() {
         String str;
+        String[] strs;
         do {
             str = scanner.nextLine();
+            strs = str.split("");
             if (!(str.isEmpty())) {
-                return str;
+                for (int i = 0; i < strs.length; i++) {
+                    if (strs[i].equals(" ")) {
+                        System.out.println("Vui lòng không nhập dấu cách ở trước vui lòng nhập lại");
+                        break;
+                    }
+                    return str;
+                }
             } else {
                 System.out.println("Vui lòng nhập không để rỗng");
             }

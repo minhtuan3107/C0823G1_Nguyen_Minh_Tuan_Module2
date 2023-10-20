@@ -91,13 +91,13 @@ public class SpendView {
         System.out.println("Nhập ID mới");
         int id = checkIdInput();
         System.out.println("Nhập tên mới");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         System.out.println("Nhập ngày tháng");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập giá tiền");
         int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập mô tả");
-        String des = scanner.nextLine();
+        String des = checkEmpty();
         Spend spend = new Spend(id, name, date, price, des);
         return spend;
     }
@@ -105,13 +105,13 @@ public class SpendView {
     public void edit() {
         int id = checkId();
         System.out.println("Nhập tên muốn sửa");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         System.out.println("Nhập ngày muốn sửa");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập số tiền muốn sửa");
         int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập mô tả");
-        String des = scanner.nextLine();
+        String des = checkEmpty();
         System.out.println("Bạn có muốn sửa y/n");
         confirm();
         if (confirm()) {
@@ -121,9 +121,19 @@ public class SpendView {
             System.out.println("Bạn không sửa");
         }
     }
-
+    public String checkEmpty(){
+        String check;
+        do{
+            check = scanner.nextLine();
+            if(!(check.isEmpty())){
+                return check;
+            }else{
+                System.out.println("Vui lòng nhập lại không được để rỗng");
+            }
+        }while (true);
+    }
     public boolean confirm() {
-        String check = scanner.nextLine();
+        String check = checkEmpty();
         if (check.toLowerCase().equals("y")) {
             return true;
         }
@@ -154,7 +164,7 @@ public class SpendView {
 
     public String inputName() {
         System.out.println("Nhập tên");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         return name;
     }
 

@@ -49,17 +49,30 @@ public class FruitView {
         } while (true);
     }
 
+    public String checkEmpty() {
+        String check;
+        do {
+            check = scanner.nextLine();
+            if (!(check.isEmpty())) {
+                return check;
+            } else {
+                System.out.println("Vui lòng nhập không được để rỗng");
+            }
+        } while (true);
+    }
+
+
     public Fruit add() {
         System.out.println("Nhập tên trái cây");
-        String name = scanner.nextLine();
+        String name = checkEmpty();
         System.out.println("Nhập loại trái cây");
-        String type = scanner.nextLine();
+        String type = checkEmpty();
         System.out.println("Nhập ngày sản xuất");
-        String date = scanner.nextLine();
+        String date = checkEmpty();
         System.out.println("Nhập hạn sử dụng");
-        String expiry = scanner.nextLine();
+        String expiry = checkEmpty();
         System.out.println("Nhập xuất xứ");
-        String origin = scanner.nextLine();
+        String origin = checkEmpty();
         System.out.println("Nhập giá");
         int price = Integer.parseInt(scanner.nextLine());
         return new Fruit(name, type, date, expiry, origin, price);

@@ -31,6 +31,7 @@ public class FruitView {
                         editFruit();
                         break;
                     case 5:
+                        System.out.println("Hẹn gặp lại");
                         return;
                     default:
                         System.out.println("Nhập từ 1 -5");
@@ -47,7 +48,7 @@ public class FruitView {
         System.out.println("2. Hiển thị");
         System.out.println("3. Xóa");
         System.out.println("4. Sửa");
-        System.out.println("4. Thoát");
+        System.out.println("5. Thoát");
     }
 
     public String checkNameEdit() {

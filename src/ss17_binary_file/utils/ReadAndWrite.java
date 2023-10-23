@@ -1,4 +1,4 @@
-package ss17_binary_file.Utils;
+package ss17_binary_file.utils;
 
 import ss17_binary_file.model.Spend;
 

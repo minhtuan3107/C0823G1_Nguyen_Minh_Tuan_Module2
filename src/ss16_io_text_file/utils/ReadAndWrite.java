@@ -1,4 +1,4 @@
-package ss14_sort.Utils;
+package ss16_io_text_file.utils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ public class ReadAndWrite {
         return strings;
     }
 
-    public static void write(List<String> strings, String path, boolean flag) {
+    public static void write(List<String> strings, String path,boolean flag) {
         BufferedWriter bufferedWriter = null;
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(path, flag));
+            bufferedWriter = new BufferedWriter(new FileWriter(path,flag));
             for (String str : strings) {
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();

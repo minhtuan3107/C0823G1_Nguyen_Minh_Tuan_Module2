@@ -1,4 +1,4 @@
-package ss10_list.Utils;
+package MVCLamThem.utils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.List;
 
 public class ReadAndWrite {
     public static List<String> read(String path) {
-        BufferedReader bufferedReader = null;
         List<String> stringList = new ArrayList<>();
+        BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(path));
             String str;
@@ -43,8 +43,6 @@ public class ReadAndWrite {
                 if (bufferedWriter != null) {
                     bufferedWriter.close();
                 }
-            }catch (FileNotFoundException e){
-                System.out.println("Không tìm thấy FILE");
             } catch (IOException e) {
                 System.out.println("Lỗi ngoại lệ");
             }

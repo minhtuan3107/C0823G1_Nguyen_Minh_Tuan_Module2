@@ -1,6 +1,6 @@
 package ss15_exception.repository;
 
-import ss15_exception.Utils.ReadAndWrite;
+import ss15_exception.utils.ReadAndWrite;
 import ss15_exception.model.Spend;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ss15_exception.Utils;
+package Furama.utils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -6,33 +6,33 @@ import java.util.List;
 
 public class ReadAndWrite {
     public static List<String> read(String path) {
-        List<String> strings = new ArrayList<>();
+        List<String> stringList = new ArrayList<>();
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(path));
-            String line = "";
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
-                strings.add(line);
+                stringList.add(line);
             }
         } catch (IOException e) {
-            System.out.println("Lỗi ngoại lệ");
+            System.out.println("Lỗi");
         } finally {
             try {
                 if (bufferedReader != null) {
                     bufferedReader.close();
                 }
             } catch (IOException e) {
-                System.out.println("Lỗi ngoại lệ");
+                System.out.println("Lỗi");
             }
         }
-        return strings;
+        return stringList;
     }
 
-    public static void write(List<String> strings, String path, boolean flag) {
+    public static void write(List<String> stringList, String path, boolean flag) {
         BufferedWriter bufferedWriter = null;
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(path, flag));
-            for (String str : strings) {
+            for (String str : stringList) {
                 bufferedWriter.write(str);
                 bufferedWriter.newLine();
             }

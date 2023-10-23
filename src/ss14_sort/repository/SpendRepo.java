@@ -1,6 +1,6 @@
 package ss14_sort.repository;
 
-import ss14_sort.Utils.ReadAndWrite;
+import ss14_sort.utils.ReadAndWrite;
 import ss14_sort.model.Spend;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package Furama.repository.impl;
 
-import Furama.Utils.ReadAndWrite;
+import Furama.utils.ReadAndWrite;
 import Furama.model.House;
 import Furama.repository.IHouseRepo;
 

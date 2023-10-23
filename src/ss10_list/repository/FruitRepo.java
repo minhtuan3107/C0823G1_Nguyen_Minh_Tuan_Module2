@@ -1,6 +1,6 @@
 package ss10_list.repository;
 
-import ss10_list.Utils.ReadAndWrite;
+import ss10_list.utils.ReadAndWrite;
 import ss10_list.model.Fruit;
 
 import java.util.ArrayList;

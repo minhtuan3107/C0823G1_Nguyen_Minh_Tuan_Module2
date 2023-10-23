@@ -10,7 +10,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 public class FuramaView {
@@ -673,29 +672,10 @@ public class FuramaView {
         } while (true);
     }
 
-    public String checkIdCustomer1() {
-        List<Customer> customerList = customerController.getList();
-        int idRandom;
-        String idCustomer;
-        idRandom = ThreadLocalRandom.current().nextInt(1, 2);
-        idCustomer = "KH-" + idRandom;
-        int count = 0;
-        for (Customer customer : customerList) {
-            if (customer.getId().equals(idCustomer)) {
-                System.out.println("ID đã full vui lòng truy cập lại sau");
-                count++;
-                break;
-            }
-        }
-        if (count < 1) {
-            checkIdCustomer1();
-        }
-        return idCustomer;
-    }
 
     public Customer addCustomer() {
         System.out.println("Nhập ID khách hàng");
-        String idCustomer = checkIdCustomer1();
+        String idCustomer = checkIdCustomer();
         System.out.println("ID của bạn là: " + idCustomer);
         System.out.println("Nhập họ và tên khách hàng");
         String name = checkName();

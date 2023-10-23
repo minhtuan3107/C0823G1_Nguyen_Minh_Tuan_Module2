@@ -1,6 +1,6 @@
 package ss16_io_text_file.repository;
 
-import ss16_io_text_file.Utils.ReadAndWrite;
+import ss16_io_text_file.utils.ReadAndWrite;
 import ss16_io_text_file.model.Spend;
 
 import java.util.ArrayList;

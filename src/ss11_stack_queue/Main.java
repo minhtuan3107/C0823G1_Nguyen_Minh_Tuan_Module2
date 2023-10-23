@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n;
-        System.out.println("Nhập n số: ");
+        System.out.println("Nhập số: ");
         n = Integer.parseInt(scanner.nextLine());
         Stack<Integer> stack = new Stack<>();
         for (int i = 2; i <= n; i++) {
@@ -17,7 +17,7 @@ public class Main {
                 stack.push(i);
             }
         }
-        System.out.println("Các số nguyên tố bé hơn " + n + "  sau khi được đưa vào stack:");
+        System.out.println("Các số nguyên tố bé hơn " + n + "  sau khi đưa vào stack: ");
         for (int number : stack) {
             System.out.println(number);
         }
@@ -27,7 +27,7 @@ public class Main {
                 queue.offer(i);
             }
         }
-        System.out.println("Các số nguyên tố bé hơn " + n + " sau khi được đưa vào queue:");
+        System.out.println("Các số nguyên tố bé hơn " + n + " sau khi đưa vào queue:");
         for (int number : queue) {
             System.out.println(number);
         }

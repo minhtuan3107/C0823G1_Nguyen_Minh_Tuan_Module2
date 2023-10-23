@@ -1,6 +1,6 @@
 package ss17_binary_file.repository;
 
-import ss17_binary_file.Utils.ReadAndWrite;
+import ss17_binary_file.utils.ReadAndWrite;
 import ss17_binary_file.model.Spend;
 
 import java.util.ArrayList;

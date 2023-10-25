@@ -1,81 +1,58 @@
 package ss17_binary_file.utils;
 
-import ss17_binary_file.model.Spend;
+import ss17_binary_file.models.Spend;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWrite {
-    //    public static List<String> read(String path) {
-//        List<String> strings = new ArrayList<>();
-//        BufferedReader bufferedReader = null;
-//        try {
-//            bufferedReader = new BufferedReader(new FileReader(path));
-//            String line = "";
-//            while ((line = bufferedReader.readLine()) != null) {
-//                strings.add(line);
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Lỗi ngoại lệ");
-//        } finally {
-//            try {
-//                if (bufferedReader != null) {
-//                    bufferedReader.close();
-//                }
-//            } catch (IOException e) {
-//                System.out.println("Lỗi ngoại lệ");
-//            }
-//        }
-//        return strings;
-//    }
-//
-//    public static void write(List<String> strings, String path) {
-//        BufferedWriter bufferedWriter = null;
-//        try {
-//            bufferedWriter = new BufferedWriter(new FileWriter(path));
-//            for (String str : strings) {
-//                bufferedWriter.write(str);
-//                bufferedWriter.newLine();
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Lỗi ngoại lệ");
-//        } finally {
-//            try {
-//                if (bufferedWriter != null) {
-//                    bufferedWriter.close();
-//                }
-//            } catch (IOException e) {
-//                System.out.println("Lỗi ngoại lệ");
-//            }
-//        }
-//    }
-    public static void writeFile(List<Spend> spendings, String path) {
-        try (FileOutputStream fos = new FileOutputStream(path);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            for (Spend spending : spendings) {
-                oos.writeObject(spending);
+    public static void write(String path, List<Spend> spendings) {
+        ObjectOutputStream oos = null;
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(path);
+            oos = new ObjectOutputStream(fos);
+            for (Spend spend : spendings) {
+                oos.writeObject(spend);
             }
             oos.flush();
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Lỗi ngoại lệ");
+            }
         }
     }
 
-    public static List<Spend> readFile(String path) {
+    public static List<Spend> read(String path) {
         List<Spend> spendings = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream(path);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(path);
+            ois = new ObjectInputStream(fis);
             while (fis.available() > 0) {
                 Spend spending = (Spend) ois.readObject();
                 spendings.add(spending);
             }
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Lỗi ngoại lệ");
+            }
         }
         return spendings;
     }

@@ -1,6 +1,6 @@
 package ss12_java_collection;
 
-import ss12_java_collection.view.FruitView;
+import ss12_java_collection.views.FruitView;
 
 public class Main {
     public static void main(String[] args) {

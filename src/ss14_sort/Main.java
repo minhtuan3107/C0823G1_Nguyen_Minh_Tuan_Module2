@@ -1,6 +1,6 @@
 package ss14_sort;
 
-import ss14_sort.view.SpendView;
+import ss14_sort.views.SpendView;
 
 public class Main {
     public static void main(String[] args) {

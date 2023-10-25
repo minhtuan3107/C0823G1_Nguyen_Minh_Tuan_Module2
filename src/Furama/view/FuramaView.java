@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static java.lang.Integer.*;
+
 public class FuramaView {
     private static final Scanner scanner = new Scanner(System.in);
     private final IEmployeeController employeeController = new EmployeeController();
@@ -42,7 +44,7 @@ public class FuramaView {
         do {
             try {
                 showMenuFacility();
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayMenuHouse();
@@ -69,7 +71,7 @@ public class FuramaView {
         do {
             try {
                 showMenuVilla();
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         villaController.add(addVilla());
@@ -96,7 +98,7 @@ public class FuramaView {
         do {
             try {
                 showMenuHouse();
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         houseController.add(addHouse());
@@ -123,7 +125,7 @@ public class FuramaView {
         do {
             try {
                 shoMenuRoom();
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         roomController.add(addRoom());
@@ -174,7 +176,7 @@ public class FuramaView {
         do {
             try {
                 showFurama();
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayMenuEmployee();
@@ -209,7 +211,7 @@ public class FuramaView {
             try {
                 showMenuEmployee();
                 System.out.println("Mời nhập");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayEmployee(employeeController.getList());
@@ -362,7 +364,7 @@ public class FuramaView {
                 System.out.println("4. Giám sát");
                 System.out.println("5. Quản lý");
                 System.out.println("6. Giám đốc");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Lễ tân";
@@ -391,7 +393,7 @@ public class FuramaView {
         do {
             idNumberCheck = checkEmpty();
             if (patternMatches(idNumberCheck, regexPhone)) {
-                return Integer.parseInt(idNumberCheck);
+                return parseInt(idNumberCheck);
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng 9 - 12 số");
             }
@@ -404,7 +406,7 @@ public class FuramaView {
             try {
                 System.out.println("1. Nam");
                 System.out.println("2. Nữ");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Nam";
@@ -427,7 +429,7 @@ public class FuramaView {
                 System.out.println("2. Cao đẳng");
                 System.out.println("3. Đại học");
                 System.out.println("4. Sau đại học");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Trung cấp";
@@ -465,7 +467,7 @@ public class FuramaView {
         do {
             phone = checkEmpty();
             if (patternMatches(phone, regexPhone)) {
-                return Integer.parseInt(phone);
+                return parseInt(phone);
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng");
             }
@@ -580,7 +582,7 @@ public class FuramaView {
             try {
                 showMenuCustomer();
                 System.out.println("Mời nhập");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayCustomer(customerController.getList());
@@ -719,7 +721,7 @@ public class FuramaView {
                 System.out.println("3. Gold");
                 System.out.println("4. Sliver");
                 System.out.println("5. Member");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Diamond";
@@ -783,7 +785,7 @@ public class FuramaView {
         int floor;
         do {
             try {
-                floor = Integer.parseInt(scanner.nextLine());
+                floor = parseInt(scanner.nextLine());
                 if (floor > 1) {
                     return floor;
                 } else {
@@ -804,7 +806,7 @@ public class FuramaView {
                 System.out.println("3. ***");
                 System.out.println("4. ****");
                 System.out.println("5. *****");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "1 sao";
@@ -833,7 +835,7 @@ public class FuramaView {
                 System.out.println("2. Thuê theo tháng");
                 System.out.println("3. Thuê theo ngày");
                 System.out.println("4. Thuê theo giờ");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "thuê theo năm";
@@ -856,7 +858,7 @@ public class FuramaView {
         int people;
         do {
             try {
-                people = Integer.parseInt(scanner.nextLine());
+                people = parseInt(scanner.nextLine());
                 if (people > 1 && people < 20) {
                     return people;
                 } else {
@@ -872,7 +874,7 @@ public class FuramaView {
         int price;
         do {
             try {
-                price = Integer.parseInt(scanner.nextLine());
+                price = parseInt(scanner.nextLine());
                 if (price > 1) {
                     return price;
                 } else {
@@ -888,7 +890,7 @@ public class FuramaView {
         int area;
         do {
             try {
-                area = Integer.parseInt(scanner.nextLine());
+                area = parseInt(scanner.nextLine());
                 if (area >= 30) {
                     return area;
                 } else {
@@ -950,7 +952,7 @@ public class FuramaView {
             try {
                 System.out.println("1.Nuoc uong mien phi");
                 System.out.println("2.Phuong tien di lai mien phi");
-                choice = Integer.parseInt(scanner.nextLine());
+                choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Nuoc uong mien phi";

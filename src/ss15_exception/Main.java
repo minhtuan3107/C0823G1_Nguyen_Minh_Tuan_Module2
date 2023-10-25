@@ -1,6 +1,6 @@
 package ss15_exception;
 
-import ss14_sort.view.SpendView;
+import ss15_exception.views.SpendView;
 
 public class Main {
     public static void main(String[] args) {

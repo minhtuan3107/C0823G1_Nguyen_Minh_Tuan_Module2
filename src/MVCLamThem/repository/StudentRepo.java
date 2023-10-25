@@ -8,7 +8,7 @@ import java.util.List;
 
 public class StudentRepo implements IStudentRepo {
     private final String COMMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\MVCLamThem\\Untils\\data.txt";
+    private final String FILE = "D:\\module2Again\\src\\MVCLamThem\\Untils\\data123";
 
     @Override
     public void add(Student student) {

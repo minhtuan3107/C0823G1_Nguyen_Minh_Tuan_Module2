@@ -1,18 +1,19 @@
 package ss10_list.repository;
 
-import ss10_list.utils.ReadAndWrite;
 import ss10_list.model.Fruit;
+import ss10_list.utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FruitRepo implements IFruitRepo {
     private final String COMMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\ss10_list\\Utils\\data.csv";
+    private final String FILE = "D:\\module2Again\\src\\ss10_list\\Utils\\data123.csv";
 
     @Override
     public List<Fruit> getList() {
         return convertToObj(ReadAndWrite.read(FILE));
+
     }
 
     public List<Fruit> convertToObj(List<String> stringList) {

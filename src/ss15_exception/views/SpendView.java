@@ -1,6 +1,5 @@
 package ss15_exception.views;
 
-import ss15_exception.controllers.ISpendController;
 import ss15_exception.controllers.SpendController;
 import ss15_exception.exceptions.IdNotFoundException;
 import ss15_exception.exceptions.UniqueIDException;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SpendView {
-    private final ISpendController spendController = new SpendController();
+    private final SpendController spendController = new SpendController();
     private final Scanner scanner = new Scanner(System.in);
 
     public void showMenu() {
@@ -46,10 +45,10 @@ public class SpendView {
                         edit();
                         break;
                     case 5:
-                        spendController.searchId(inputId());
+                        outputSearchId();
                         break;
                     case 6:
-                        spendController.searchName(inputName());
+                        outputSearchName();
                         break;
                     case 7:
                         spendController.sortName();
@@ -167,6 +166,28 @@ public class SpendView {
         System.out.println("Nhập tên");
         String name = scanner.nextLine();
         return name;
+    }
+
+    public void outputSearchName() {
+        List<Spend> spends = spendController.searchName(inputName());
+        if (spends.isEmpty()) {
+            System.out.println("Không tìm thấy tên");
+        } else {
+            for (Spend spend : spends) {
+                System.out.println(spend);
+            }
+        }
+    }
+
+    public void outputSearchId() {
+        List<Spend> spends = spendController.searchId(inputId());
+        if (spends.isEmpty()) {
+            System.out.println("Không tìm thấy ID");
+        } else {
+            for (Spend spend : spends) {
+                System.out.println(spend);
+            }
+        }
     }
 
     public void display() {

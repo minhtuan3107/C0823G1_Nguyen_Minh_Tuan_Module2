@@ -1,6 +1,5 @@
 package ss14_sort.views;
 
-import ss14_sort.controllers.ISpendController;
 import ss14_sort.controllers.SpendController;
 import ss14_sort.models.Spend;
 
@@ -8,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SpendView {
-    private final ISpendController spendController = new SpendController();
+    private final SpendController spendController = new SpendController();
     private final Scanner scanner = new Scanner(System.in);
 
     public void showMenu() {
@@ -44,10 +43,10 @@ public class SpendView {
                         edit();
                         break;
                     case 5:
-                        spendController.searchId(inputId());
+                        outputSearchById();
                         break;
                     case 6:
-                        spendController.searchName(inputName());
+                        outputSearchByName();
                         break;
                     case 7:
                         spendController.sortName();
@@ -169,6 +168,28 @@ public class SpendView {
         System.out.println("Nhập ID");
         int id = Integer.parseInt(scanner.nextLine());
         return id;
+    }
+
+    public void outputSearchById() {
+        List<Spend> spends = spendController.searchId(inputId());
+        if (spends.isEmpty()) {
+            System.out.println("Không tìm thấy ID");
+        } else {
+            for (Spend spend : spends) {
+                System.out.println(spend);
+            }
+        }
+    }
+
+    public void outputSearchByName() {
+        List<Spend> spends = spendController.searchName(inputName());
+        if (spends.isEmpty()) {
+            System.out.println("Không tìm thấy tên");
+        } else {
+            for (Spend spend : spends) {
+                System.out.println(spend);
+            }
+        }
     }
 
     public String inputName() {

@@ -31,13 +31,13 @@ public class SpendService implements ISpendService {
     }
 
     @Override
-    public void searchId(int id) {
-        spendRepo.searchId(id);
+    public List<Spend> searchId(int id) {
+        return spendRepo.searchId(id);
     }
 
     @Override
-    public void searchName(String name) {
-        spendRepo.searchName(name);
+    public List<Spend> searchName(String name) {
+        return spendRepo.searchName(name);
     }
 
     @Override

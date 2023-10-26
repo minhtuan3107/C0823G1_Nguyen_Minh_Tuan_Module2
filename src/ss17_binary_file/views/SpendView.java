@@ -1,6 +1,5 @@
 package ss17_binary_file.views;
 
-import ss17_binary_file.controllers.ISpendController;
 import ss17_binary_file.controllers.SpendController;
 import ss17_binary_file.exceptions.UniqueIDException;
 import ss17_binary_file.models.Spend;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SpendView {
-    private final ISpendController spendController = new SpendController();
+    private final SpendController spendController = new SpendController();
     private final Scanner scanner = new Scanner(System.in);
 
     public void showMenu() {

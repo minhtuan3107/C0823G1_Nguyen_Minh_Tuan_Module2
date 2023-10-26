@@ -13,9 +13,9 @@ public interface ISpendRepository {
 
     void edit(int id, Spend spend);
 
-    void searchId(int id);
+    List<Spend> searchId(int id);
 
-    void searchName(String name);
+    List<Spend> searchName(String name);
 
     void sortName();
 

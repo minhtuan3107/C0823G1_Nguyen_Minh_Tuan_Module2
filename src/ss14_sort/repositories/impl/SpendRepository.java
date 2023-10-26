@@ -53,23 +53,27 @@ public class SpendRepository implements ISpendRepository {
     }
 
     @Override
-    public void searchId(int id) {
+    public List<Spend> searchId(int id) {
         List<Spend> spendList = getList();
+        List<Spend> spendList1 = new ArrayList<>();
         for (Spend spend : spendList) {
             if (spend.getId() == id) {
-                System.out.println(spend);
+                spendList1.add(spend);
             }
         }
+        return spendList1;
     }
 
     @Override
-    public void searchName(String name) {
+    public List<Spend> searchName(String name) {
         List<Spend> spendList = getList();
+        List<Spend> spends = new ArrayList<>();
         for (Spend spend : spendList) {
             if (spend.getName().contains(name)) {
-                System.out.println(spend);
+                spends.add(spend);
             }
         }
+        return spends;
     }
 
     @Override

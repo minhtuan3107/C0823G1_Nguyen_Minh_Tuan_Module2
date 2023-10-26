@@ -25,12 +25,12 @@ public class SpendController {
         spendService.edit(id, spend);
     }
 
-    public void searchId(int id) {
-        spendService.searchId(id);
+    public List<Spend> searchId(int id) {
+        return spendService.searchId(id);
     }
 
-    public void searchName(String name) {
-        spendService.searchName(name);
+    public List<Spend> searchName(String name) {
+        return spendService.searchName(name);
     }
 
     public void sortName() {

@@ -6,37 +6,31 @@ import ss14_sort.services.impl.SpendService;
 
 import java.util.List;
 
-public class SpendController implements ISpendController {
+public class SpendController {
     private final ISpendService spendService = new SpendService();
 
-    @Override
     public void add(Spend spend) {
         spendService.add(spend);
     }
 
-    @Override
     public List<Spend> getList() {
         return spendService.getList();
     }
 
-    @Override
     public void remove(int id) {
         spendService.remove(id);
     }
 
-    @Override
     public void edit(int id, Spend spend) {
         spendService.edit(id, spend);
     }
 
-    @Override
-    public void searchId(int id) {
-        spendService.searchId(id);
+    public List<Spend> searchId(int id) {
+        return spendService.searchId(id);
     }
 
-    @Override
-    public void searchName(String name) {
-        spendService.searchName(name);
+    public List<Spend> searchName(String name) {
+        return spendService.searchName(name);
     }
 
     public void sortName() {

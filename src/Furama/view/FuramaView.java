@@ -1,6 +1,5 @@
 package Furama.view;
 
-import Furama.controller.*;
 import Furama.controller.impl.*;
 import Furama.model.*;
 
@@ -12,15 +11,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
 
 public class FuramaView {
     private static final Scanner scanner = new Scanner(System.in);
-    private final IEmployeeController employeeController = new EmployeeController();
-    private final ICustomerController customerController = new CustomerController();
-    private final IHouseController houseController = new HouseController();
-    private final IVillaController villaController = new VillaController();
-    private final IRoomController roomController = new RoomController();
+    private final EmployeeController employeeController = new EmployeeController();
+    private final CustomerController customerController = new CustomerController();
+    private final HouseController houseController = new HouseController();
+    private final VillaController villaController = new VillaController();
+    private final RoomController roomController = new RoomController();
     //Phan hien thi
 
     public void showFurama() {
@@ -226,7 +225,7 @@ public class FuramaView {
                         employeeController.delete(inputIdDelete());
                         break;
                     case 5:
-                        employeeController.search(searchName());
+                        outputSearchEmployee();
                         break;
                     case 6:
                         return;
@@ -257,6 +256,28 @@ public class FuramaView {
         System.out.println("Nhap ten can tim");
         String findName = checkEmpty();
         return findName;
+    }
+
+    public void outputSearchEmployee() {
+        List<Employee> employees = employeeController.search(searchName());
+        if (employees.isEmpty()) {
+            System.out.println("Không tìm thấy");
+        } else {
+            for (Employee employee : employees) {
+                System.out.println(employee);
+            }
+        }
+    }
+
+    public void outputSearchCustomer() {
+        List<Customer> customerList = customerController.search(searchName());
+        if (customerList.isEmpty()) {
+            System.out.println("Không tìm thấy");
+        } else {
+            for (Customer customer : customerList) {
+                System.out.println(customer);
+            }
+        }
     }
 
     public void displayEmployee(List<Employee> employees) {
@@ -597,7 +618,7 @@ public class FuramaView {
                         customerController.delete(deleteIdCustomer());
                         break;
                     case 5:
-                        customerController.search(searchName());
+                        outputSearchCustomer();
                         break;
                     case 6:
                         return;

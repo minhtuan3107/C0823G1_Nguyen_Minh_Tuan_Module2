@@ -67,28 +67,37 @@ public class SpendView {
         } while (true);
     }
 
-    public int checkIdInput() {
-        int id;
-        List<Spend> spendList = spendController.getList();
+//    public int checkIdInput() {
+//        int id;
+//        List<Spend> spendList = spendController.getList();
+//        int count = 0;
+//        do {
+//            id = Integer.parseInt(scanner.nextLine());
+//            for (Spend spend : spendList) {
+//                if (spend.getId() == id) {
+//                    count++;
+//                }
+//            }
+//            if (count == 0) {
+//                return id;
+//            } else {
+//                System.out.println("Vui lòng nhập lại ID đã tồn tại");
+//            }
+//        } while (true);
+//    }
+
+    public int randomId() {
+        List<Spend> spends = spendController.getList();
         int count = 0;
-        do {
-            id = Integer.parseInt(scanner.nextLine());
-            for (Spend spend : spendList) {
-                if (spend.getId() == id) {
-                    count++;
-                }
-            }
-            if (count == 0) {
-                return id;
-            } else {
-                System.out.println("Vui lòng nhập lại ID đã tồn tại");
-            }
-        } while (true);
+        for (Spend spend : spends) {
+            count = spend.getId();
+        }
+        return count + 1;
     }
 
     public Spend add() {
-        System.out.println("Nhập ID mới");
-        int id = checkIdInput();
+        int id = randomId();
+        System.out.println("ID của bạn là: " + id);
         System.out.println("Nhập tên mới");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày tháng");
@@ -147,7 +156,7 @@ public class SpendView {
         List<Spend> spendList = spendController.getList();
         int id;
         do {
-            System.out.println("Nhập ID");
+            System.out.println("Nhập ID cần xóa");
             id = Integer.parseInt(scanner.nextLine());
             for (Spend spend : spendList) {
                 if (spend.getId() == id) {

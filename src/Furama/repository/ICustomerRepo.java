@@ -1,7 +1,6 @@
 package Furama.repository;
 
 import Furama.model.Customer;
-import Furama.model.Employee;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ public interface ICustomerRepo {
 
     void delete(String id);
 
-    void search(String name);
+    List<Customer> search(String name);
 
     void add(Customer customer);
 

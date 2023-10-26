@@ -1,7 +1,6 @@
 package Furama.service.impl;
 
 import Furama.model.Customer;
-import Furama.model.Employee;
 import Furama.repository.ICustomerRepo;
 import Furama.repository.impl.CustomerRepo;
 import Furama.service.ICustomerService;
@@ -22,8 +21,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void search(String name) {
-        customerRepo.search(name);
+    public List<Customer> search(String name) {
+        return customerRepo.search(name);
     }
 
     @Override

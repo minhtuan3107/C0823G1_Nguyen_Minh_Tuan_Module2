@@ -1,8 +1,8 @@
 package Furama.repository.impl;
 
-import Furama.utils.ReadAndWrite;
 import Furama.model.Employee;
 import Furama.repository.IEmployeeRepo;
+import Furama.utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class EmployeeRepo implements IEmployeeRepo {
                 employeeList.get(i).setLevel(employee.getLevel());
                 employeeList.get(i).setLocation(employee.getLocation());
                 employeeList.get(i).setWage(employee.getWage());
-                ReadAndWrite.write(convertToString(employeeList), FILE,false);
+                ReadAndWrite.write(convertToString(employeeList), FILE, false);
             }
         }
     }
@@ -37,20 +37,22 @@ public class EmployeeRepo implements IEmployeeRepo {
         for (Employee employee : employees) {
             if (employee.getId().equals(id)) {
                 employees.remove(employee);
-                ReadAndWrite.write(convertToString(employees), FILE,false);
+                ReadAndWrite.write(convertToString(employees), FILE, false);
                 break;
             }
         }
     }
 
     @Override
-    public void search(String name) {
+    public List<Employee> search(String name) {
         List<Employee> employeeList = getList();
+        List<Employee> employees = new ArrayList<>();
         for (Employee employee : employeeList) {
             if (employee.getName().contains(name)) {
-                System.out.println(employee);
+                employees.add(employee);
             }
         }
+        return employees;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class EmployeeRepo implements IEmployeeRepo {
     public void add(Employee employee) {
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(employee);
-        ReadAndWrite.write(convertToString(employeeList), FILE,true);
+        ReadAndWrite.write(convertToString(employeeList), FILE, true);
     }
 
     public List<String> convertToString(List<Employee> employeeList) {

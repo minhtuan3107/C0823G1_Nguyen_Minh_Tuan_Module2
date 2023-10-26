@@ -9,7 +9,7 @@ public interface IEmployeeService {
 
     void delete(String id);
 
-    void search(String name);
+    List<Employee> search(String name);
 
     List<Employee> getList();
 

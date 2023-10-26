@@ -1,8 +1,8 @@
 package Furama.repository.impl;
 
-import Furama.utils.ReadAndWrite;
 import Furama.model.Customer;
 import Furama.repository.ICustomerRepo;
+import Furama.utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,13 +42,15 @@ public class CustomerRepo implements ICustomerRepo {
     }
 
     @Override
-    public void search(String name) {
+    public List<Customer> search(String name) {
         List<Customer> customerList = getList();
+        List<Customer> customers = new ArrayList<>();
         for (Customer customer : customerList) {
             if (customer.getName().contains(name)) {
-                System.out.println(customer);
+                customers.add(customer);
             }
         }
+        return customers;
     }
 
     @Override

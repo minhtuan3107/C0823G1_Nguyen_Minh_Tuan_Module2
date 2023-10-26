@@ -21,8 +21,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public void search(String name) {
-        employeeRepo.search(name);
+    public List<Employee> search(String name) {
+        return employeeRepo.search(name);
     }
 
     @Override

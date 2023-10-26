@@ -5,6 +5,7 @@ import ss14_sort.repositories.ISpendRepository;
 import ss14_sort.utils.ReadAndWrite;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class SpendRepository implements ISpendRepository {
@@ -79,7 +80,12 @@ public class SpendRepository implements ISpendRepository {
     @Override
     public void sortName() {
         List<Spend> spendList = getList();
-        spendList.sort((o1, o2) -> Integer.parseInt(o1.getName()) > Integer.parseInt(o2.getName()) ? 1 : -1);
+        spendList.sort(new Comparator<Spend>() {
+            @Override
+            public int compare(Spend o1, Spend o2) {
+                return (o1.getName().compareTo(o2.getName()));
+            }
+        });
         ReadAndWrite.write(convertToString(spendList), FILE, false);
     }
 
@@ -87,7 +93,12 @@ public class SpendRepository implements ISpendRepository {
     public void sortPrice() {
         List<String> strings = ReadAndWrite.read(FILE);
         List<Spend> spendList = convertToObj(strings);
-        spendList.sort((o1, o2) -> o1.getPrice() > o2.getPrice() ? -1 : 1);
+        spendList.sort(new Comparator<Spend>() {
+            @Override
+            public int compare(Spend o1, Spend o2) {
+                return Integer.compare(o2.getPrice(), o1.getPrice());
+            }
+        });
         ReadAndWrite.write(convertToString(spendList), FILE, false);
     }
 

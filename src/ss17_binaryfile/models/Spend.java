@@ -1,12 +1,17 @@
 package ss17_binaryfile.models;
 
-public class Spend {
+import java.io.Serializable;
+
+public class Spend implements Serializable {
     private int id;
     private String name;
     private String date;
     private int price;
     private String des;
-    public Spend(){}
+
+    public Spend() {
+    }
+
     public Spend(int id, String name, String date, int price, String des) {
         this.id = id;
         this.name = name;
@@ -57,12 +62,6 @@ public class Spend {
 
     @Override
     public String toString() {
-        return "Spend{" +
-                "ID=" + id +
-                ", Tên ='" + name + '\'' +
-                ", Ngày ='" + date + '\'' +
-                ", Tiền =" + price +
-                ", Mô tả='" + des + '\'' +
-                '}';
+        return "Spend " + "ID " + id + " Tên " + name + " Ngày " + " Tiền " + price + " Mô tả " + des;
     }
 }

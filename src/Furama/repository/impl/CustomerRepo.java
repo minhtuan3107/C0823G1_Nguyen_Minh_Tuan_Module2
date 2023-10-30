@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepo implements ICustomerRepo {
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataCustomer";
+    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataCustomer.csv";
     private final String COMMA = ",";
 
     @Override

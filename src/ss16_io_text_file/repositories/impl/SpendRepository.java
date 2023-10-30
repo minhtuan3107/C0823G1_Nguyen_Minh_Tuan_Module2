@@ -5,6 +5,7 @@ import ss16_io_text_file.repositories.ISpendRepository;
 import ss16_io_text_file.utils.ReadAndWrite;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class SpendRepository implements ISpendRepository {
@@ -80,26 +81,30 @@ public class SpendRepository implements ISpendRepository {
     public void sortName() {
         List<String> strings = ReadAndWrite.read(FILE);
         List<Spend> spendList = convertToObj(strings);
-        spendList.sort((o1, o2) -> Integer.parseInt(o1.getName()) > Integer.parseInt(o2.getName()) ? 1 : -1);
-        ReadAndWrite.write(convertToString(spendList), FILE, false);
+        spendList.sort(new Comparator<Spend>() {
+            @Override
+            public int compare(Spend o1, Spend o2) {
+                return (o1.getName().compareTo(o2.getName()));
+            }
+        });
     }
 
     @Override
     public void sortPrice() {
         List<String> strings = ReadAndWrite.read(FILE);
         List<Spend> spendList = convertToObj(strings);
-        spendList.sort((o1, o2) -> o1.getPrice() > o2.getPrice() ? -1 : 1);
-        ReadAndWrite.write(convertToString(spendList), FILE, false);
+        spendList.sort(new Comparator<Spend>() {
+            @Override
+            public int compare(Spend o1, Spend o2) {
+                return Integer.compare(o1.getPrice(), o2.getPrice());
+            }
+        });
     }
 
     public List<String> convertToString(List<Spend> spendList) {
         List<String> stringList = new ArrayList<>();
         for (Spend spend : spendList) {
-            stringList.add(spend.getId() + COMMA
-                    + spend.getName() + COMMA
-                    + spend.getDate() + COMMA
-                    + spend.getPrice() + COMMA
-                    + spend.getDes());
+            stringList.add(spend.getId() + COMMA + spend.getName() + COMMA + spend.getDate() + COMMA + spend.getPrice() + COMMA + spend.getDes());
         }
         return stringList;
     }

@@ -1,7 +1,7 @@
-package ss14_sort.views;
+package ss17_binaryfile.views;
 
-import ss14_sort.controllers.SpendController;
-import ss14_sort.models.Spend;
+import ss17_binaryfile.controllers.SpendController;
+import ss17_binaryfile.models.Spend;
 
 import java.util.List;
 import java.util.Scanner;
@@ -43,10 +43,10 @@ public class SpendView {
                         edit();
                         break;
                     case 5:
-                        outputSearchById();
+                        outputSearchId();
                         break;
                     case 6:
-                        outputSearchByName();
+                        outputSearchName();
                         break;
                     case 7:
                         spendController.sortName();
@@ -67,18 +67,28 @@ public class SpendView {
         } while (true);
     }
 
-    public int randomId() {
-        List<Spend> spends = spendController.getList();
-        int count = 0;
-        for (Spend spend : spends) {
-            count = spend.getId();
-        }
-        return count + 1;
+    public int checkIdInput() {
+        int id;
+        List<Spend> spendList = spendController.getList();
+        do {
+            id = Integer.parseInt(scanner.nextLine());
+            int count = 0;
+            for (Spend spend : spendList) {
+                if (spend.getId() == id) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                return id;
+            } else {
+                System.out.println("ID đã tồn tại vui lòng nhập lại");
+            }
+        } while (true);
     }
 
     public Spend add() {
-        int id = randomId();
-        System.out.println("ID của bạn là: " + id);
+        System.out.println("Nhập ID mới");
+        int id = checkIdInput();
         System.out.println("Nhập tên mới");
         String name = scanner.nextLine();
         System.out.println("Nhập ngày tháng");
@@ -92,7 +102,6 @@ public class SpendView {
     }
 
     public void edit() {
-        System.out.println("Nhập ID cần sửa");
         int id = checkId();
         System.out.println("Nhập tên muốn sửa");
         String name = scanner.nextLine();
@@ -102,7 +111,7 @@ public class SpendView {
         int price = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập mô tả");
         String des = scanner.nextLine();
-        System.out.println("Bạn có muốn sửa không y/n");
+        System.out.println("Bạn có muốn sửa y/n");
         if (confirm()) {
             Spend spend = new Spend(id, name, date, price, des);
             spendController.edit(id, spend);
@@ -113,7 +122,7 @@ public class SpendView {
 
     public boolean confirm() {
         String check = scanner.nextLine();
-        if (check.equalsIgnoreCase("y")) {
+        if (check.toLowerCase().equals("y")) {
             return true;
         }
         return false;
@@ -123,6 +132,7 @@ public class SpendView {
         List<Spend> spendList = spendController.getList();
         int id;
         do {
+            System.out.println("Nhập ID");
             id = Integer.parseInt(scanner.nextLine());
             for (Spend spend : spendList) {
                 if (spend.getId() == id) {
@@ -132,61 +142,59 @@ public class SpendView {
             System.out.println("ID không tồn tại vui lòng nhập lại");
         } while (true);
     }
+
     public int checkIdRemove() {
         List<Spend> spendList = spendController.getList();
         int id;
         do {
-            System.out.println("Nhập ID cần xóa");
+            System.out.println("Nhập ID");
             id = Integer.parseInt(scanner.nextLine());
-            int count = 0;
             for (Spend spend : spendList) {
                 if (spend.getId() == id) {
-                    count++;
-                    System.out.println("Bạn có muốn xóa id " + id + " không ? y/n");
+                    System.out.println("Bạn có muốn xóa không? y/n");
                     if (confirm()) {
                         return id;
                     } else {
                         System.out.println("Bạn không xóa");
-                        break;
                     }
                 }
             }
-            if (count == 0) {
-                System.out.println("ID không tồn tại vui lòng nhập lại");
-            }
+            System.out.println("ID không tồn tại vui lòng nhập lại");
         } while (true);
     }
 
     public int inputId() {
         System.out.println("Nhập ID");
-        return Integer.parseInt(scanner.nextLine());
-    }
-
-    public void outputSearchById() {
-        List<Spend> spends = spendController.searchId(inputId());
-        if (spends.isEmpty()) {
-            System.out.println("Không tìm thấy ID");
-        } else {
-            for (Spend spend : spends) {
-                System.out.println(spend);
-            }
-        }
-    }
-
-    public void outputSearchByName() {
-        List<Spend> spends = spendController.searchName(inputName());
-        if (spends.isEmpty()) {
-            System.out.println("Không tìm thấy tên");
-        } else {
-            for (Spend spend : spends) {
-                System.out.println(spend);
-            }
-        }
+        int id = Integer.parseInt(scanner.nextLine());
+        return id;
     }
 
     public String inputName() {
         System.out.println("Nhập tên");
-        return scanner.nextLine();
+        String name = scanner.nextLine();
+        return name;
+    }
+
+    public void outputSearchName() {
+        List<Spend> spendList = spendController.searchName(inputName());
+        if (spendList.isEmpty()) {
+            System.out.println("Không tìm thấy tên");
+        } else {
+            for (Spend spend : spendList) {
+                System.out.println(spend);
+            }
+        }
+    }
+
+    public void outputSearchId() {
+        List<Spend> spendList = spendController.searchId(inputId());
+        if (spendList.isEmpty()) {
+            System.out.println("Không tìm thấy ID");
+        } else {
+            for (Spend spend : spendList) {
+                System.out.println(spend);
+            }
+        }
     }
 
     public void display() {

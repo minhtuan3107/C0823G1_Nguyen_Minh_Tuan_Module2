@@ -1,8 +1,8 @@
-package ss16_io_text_file.controllers;
+package ss17_binaryfile.controllers;
 
-import ss16_io_text_file.models.Spend;
-import ss16_io_text_file.services.ISpendService;
-import ss16_io_text_file.services.impl.SpendService;
+import ss17_binaryfile.models.Spend;
+import ss17_binaryfile.services.ISpendService;
+import ss17_binaryfile.services.impl.SpendService;
 
 import java.util.List;
 

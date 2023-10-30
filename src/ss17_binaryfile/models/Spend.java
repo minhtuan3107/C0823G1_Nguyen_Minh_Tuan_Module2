@@ -1,4 +1,4 @@
-package ss16_io_text_file.models;
+package ss17_binaryfile.models;
 
 public class Spend {
     private int id;
@@ -6,10 +6,7 @@ public class Spend {
     private String date;
     private int price;
     private String des;
-
-    public Spend() {
-    }
-
+    public Spend(){}
     public Spend(int id, String name, String date, int price, String des) {
         this.id = id;
         this.name = name;

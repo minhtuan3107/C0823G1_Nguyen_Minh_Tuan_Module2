@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Regex {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Mời nhập email để check");
+        System.out.println("Nhập email để kiểm tra");
         String email = scanner.nextLine();
         String regexEmail = "^[\\w-\\.]+[0-9]+@(gmail\\.)+[\\w-]{3}$";
         System.out.println("Email: " + email + " " + patternMatches(email, regexEmail));

@@ -699,7 +699,6 @@ public class FuramaView {
     public Customer addCustomer() {
         System.out.println("Nhập ID khách hàng");
         String idCustomer = checkIdCustomer();
-        System.out.println("ID của bạn là: " + idCustomer);
         System.out.println("Nhập họ và tên khách hàng");
         String name = checkName();
         System.out.println("Nhập birthday khách hàng");

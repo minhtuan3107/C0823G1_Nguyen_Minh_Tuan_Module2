@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class SpendRepository implements ISpendRepository {
-    private final String FILE = "D:\\module2Again\\src\\ss17_binaryfile\\utils\\data.txt";
+    private final String FILE = "D:\\module2Again\\src\\ss17_binaryfile\\utils\\data.csv";
 
 
     @Override

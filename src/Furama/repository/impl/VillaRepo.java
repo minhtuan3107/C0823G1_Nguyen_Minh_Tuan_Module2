@@ -1,8 +1,8 @@
 package Furama.repository.impl;
 
-import Furama.utils.ReadAndWrite;
 import Furama.model.Villa;
 import Furama.repository.IVillaRepo;
+import Furama.utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class VillaRepo implements IVillaRepo {
-    private final String COMA = ",";
+    private final String COMMA = ",";
     private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataVilla";
 
     @Override
@@ -29,14 +29,14 @@ public class VillaRepo implements IVillaRepo {
     public List<String> convertToString(Map<String, Villa> e) {
         List<String> strings = new ArrayList<>();
         e.forEach((String id, Villa villa) -> {
-            strings.add(villa.getId() + COMA +
-                    villa.getName() + COMA +
-                    villa.getAcreage() + COMA +
-                    villa.getPrice() + COMA +
-                    villa.getPeople() + COMA +
-                    villa.getType() + COMA +
-                    villa.getStandard() + COMA +
-                    villa.getAreaPool() + COMA +
+            strings.add(villa.getId() + COMMA +
+                    villa.getName() + COMMA +
+                    villa.getAcreage() + COMMA +
+                    villa.getPrice() + COMMA +
+                    villa.getPeople() + COMMA +
+                    villa.getType() + COMMA +
+                    villa.getStandard() + COMMA +
+                    villa.getAreaPool() + COMMA +
                     villa.getFloor());
         });
         return strings;
@@ -48,7 +48,7 @@ public class VillaRepo implements IVillaRepo {
             if (str.isEmpty()) {
                 continue;
             }
-            String[] data = str.split(COMA);
+            String[] data = str.split(COMMA);
             if (data.length < 9) {
                 continue;
             }

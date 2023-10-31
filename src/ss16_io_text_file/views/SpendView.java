@@ -70,9 +70,9 @@ public class SpendView {
     public int checkIdInput() {
         int id;
         List<Spend> spendList = spendController.getList();
+        int count = 0;
         do {
             id = Integer.parseInt(scanner.nextLine());
-            int count = 0;
             for (Spend spend : spendList) {
                 if (spend.getId() == id) {
                     count++;

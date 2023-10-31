@@ -31,15 +31,6 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Khách hàng" +
-                "ID '" + getId() + '\'' +
-                ", Tên '" + getName() + '\'' +
-                ", Ngày sinh '" + getBirthday() + '\'' +
-                ", Giới tính '" + getGender() + '\'' +
-                ", Số CCCD " + getIdNumber() +
-                ", Số điện thoại" + getPhone() +
-                ", Email '" + getEmail() + '\'' +
-                "Loại khách hàng '" + type + '\'' +
-                ", Địa chỉ '" + address + '\'';
+        return "ID: " + getId() + " Tên: " + getName() + " Ngày sinh: " + getBirthday() + " Giới tính: " + getGender() + " Số CCCD: " + getIdNumber() + " Số điện thoại: " + getPhone() + " Email: " + getEmail() + " Loại khách hàng: " + getType() + " Địa chỉ: " + getAddress();
     }
 }

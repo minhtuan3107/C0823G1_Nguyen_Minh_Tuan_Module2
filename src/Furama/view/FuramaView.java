@@ -1,6 +1,6 @@
 package Furama.view;
 
-import Furama.controller.impl.*;
+import Furama.controller.*;
 import Furama.model.*;
 
 import java.time.LocalDate;
@@ -31,7 +31,7 @@ public class FuramaView {
     }
 
     public void showMenuFacility() {
-        System.out.println("= DataVilla =");
+        System.out.println("= Facility =");
         System.out.println("1. Quản lý House");
         System.out.println("2. Quản lý Room");
         System.out.println("3. Quản lý Villa");
@@ -213,7 +213,7 @@ public class FuramaView {
                 choice = parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
-                        displayEmployee(employeeController.getList());
+                        displayEmployee();
                         break;
                     case 2:
                         employeeController.add(addEmployee());
@@ -280,7 +280,8 @@ public class FuramaView {
         }
     }
 
-    public void displayEmployee(List<Employee> employees) {
+    public void displayEmployee() {
+        List<Employee> employees = employeeController.getList();
         if (employees.size() == 0) {
             System.out.println("Danh sách trống");
         } else {
@@ -320,9 +321,21 @@ public class FuramaView {
         }
     }
 
+    public String inputIdEmployee() {
+        List<Employee> employees = employeeController.getList();
+        String text = null;
+        String[] str;
+        for (Employee employee : employees) {
+            str = employee.getId().split("-");
+            text = str[1];
+        }
+        int count = Integer.parseInt(text);
+        return "NV-" + (count + 1);
+    }
+
     public Employee addEmployee() {
-        System.out.println("Nhập ID employee");
-        String idEmployee = checkIdEmployee();
+        String idEmployee = inputIdEmployee();
+        System.out.println("ID của bạn là: " + idEmployee);
         System.out.println("Nhập họ và tên Employee");
         String nameEmployee = checkName();
         System.out.println("Nhập birthday Employee");
@@ -410,10 +423,10 @@ public class FuramaView {
 
     public int idNumber() {
         String idNumberCheck;
-        String regexPhone = "^[0-9]{9,12}$";
+        String regexNummber = "^[0-9]{9,12}$";
         do {
             idNumberCheck = checkEmpty();
-            if (patternMatches(idNumberCheck, regexPhone)) {
+            if (patternMatches(idNumberCheck, regexNummber)) {
                 return parseInt(idNumberCheck);
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng 9 - 12 số");
@@ -484,13 +497,13 @@ public class FuramaView {
 
     public int checkPhone() {
         String phone;
-        String regexPhone = "^(0){1}[3|5|7|8|9]{1}[0-9]{8}$";
+        String regexPhone = "^(0){1}[3|5|7|8|9]{1}[0-9]{8}$"; // ^84\+[3|5|7|9]{1}[1-9]{8}$
         do {
             phone = checkEmpty();
             if (patternMatches(phone, regexPhone)) {
                 return parseInt(phone);
             } else {
-                System.out.println("Vui lòng nhập đúng định dạng");
+                System.out.println("Vui lòng nhập đúng định dạng sdt");
             }
         } while (true);
     }
@@ -569,22 +582,22 @@ public class FuramaView {
         } while (true);
     }
 
-    public String checkIdEmployee() {
-        String idCheck;
-        String regexId = "^(NV-)+[0-9]{4}$";
-        do {
-            idCheck = checkEmpty();
-            if (patternMatches(idCheck, regexId)) {
-                if (checkIdInput(idCheck)) {
-                    return idCheck;
-                } else {
-                    System.out.println("ID đã trùng trên hệ thống");
-                }
-            } else {
-                System.out.println("Vui lòng nhập đúng định dạng NV-1234");
-            }
-        } while (true);
-    }
+//    public String checkIdEmployee() {
+//        String idCheck;
+//        String regexId = "^(NV-)+[0-9]{4}$";
+//        do {
+//            idCheck = checkEmpty();
+//            if (patternMatches(idCheck, regexId)) {
+//                if (checkIdInput(idCheck)) {
+//                    return idCheck;
+//                } else {
+//                    System.out.println("ID đã trùng trên hệ thống");
+//                }
+//            } else {
+//                System.out.println("Vui lòng nhập đúng định dạng NV-1234");
+//            }
+//        } while (true);
+//    }
 
     // Phan Customer
     public void showMenuCustomer() {
@@ -598,15 +611,15 @@ public class FuramaView {
     }
 
     public void displayMenuCustomer() {
-        int choice;
+        Integer choice;
         do {
             try {
                 showMenuCustomer();
                 System.out.println("Mời nhập");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
-                        displayCustomer(customerController.getList());
+                        displayCustomer();
                         break;
                     case 2:
                         customerController.add(addCustomer());
@@ -624,14 +637,17 @@ public class FuramaView {
                         return;
                     default:
                         System.out.println("Vui lòng nhập từ 1 - 6");
+                        break;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+                break;
             }
         } while (true);
     }
 
-    public void displayCustomer(List<Customer> customerList) {
+    public void displayCustomer() {
+        List<Customer> customerList = customerController.getList();
         if (customerList.size() == 0) {
             System.out.println("Danh sách trống");
         } else {
@@ -697,8 +713,8 @@ public class FuramaView {
 
 
     public Customer addCustomer() {
-        System.out.println("Nhập ID khách hàng");
-        String idCustomer = checkIdCustomer();
+        String idCustomer = inputIdCustomer();
+        System.out.println("ID khách hàng của bạn là: " + idCustomer);
         System.out.println("Nhập họ và tên khách hàng");
         String name = checkName();
         System.out.println("Nhập birthday khách hàng");
@@ -762,21 +778,33 @@ public class FuramaView {
         } while (true);
     }
 
-    public String checkIdCustomer() {
-        String idCheck;
-        String regexId = "^(KH-)+[0-9]{4}$";
-        do {
-            idCheck = checkEmpty();
-            if (patternMatches(idCheck, regexId)) {
-                if (checkIdInput(idCheck)) {
-                    return idCheck;
-                } else {
-                    System.out.println("ID đã trùng trên hệ thống");
-                }
-            } else {
-                System.out.println("Vui lòng nhập đúng định dạng NV-1234");
-            }
-        } while (true);
+    //    public String checkIdCustomer() {
+//        String idCheck;
+//        String regexId = "^(KH-)+[0-9]{4}$";
+//        do {
+//            idCheck = checkEmpty();
+//            if (patternMatches(idCheck, regexId)) {
+//                if (checkIdInput(idCheck)) {
+//                    return idCheck;
+//                } else {
+//                    System.out.println("ID đã trùng trên hệ thống");
+//                }
+//            } else {
+//                System.out.println("Vui lòng nhập đúng định dạng KH-1234");
+//            }
+//        } while (true);
+//    }
+    public String inputIdCustomer() {
+        List<Customer> customerList = customerController.getList();
+        String[] text;
+        int count;
+        String str = null;
+        for (Customer customer : customerList) {
+            text = customer.getId().split("-");
+            str = text[1];
+        }
+        count = Integer.parseInt(str);
+        return "KH-" + (count + 1);
     }
 
     public Villa addVilla() {
@@ -1040,13 +1068,7 @@ public class FuramaView {
             str = scanner.nextLine();
             strs = str.split("");
             if (!(str.isEmpty())) {
-                for (int i = 0; i < strs.length; i++) {
-                    if (strs[i].equals(" ")) {
-                        System.out.println("Vui lòng không nhập dấu cách ở trước vui lòng nhập lại");
-                        break;
-                    }
-                    return str;
-                }
+                return str;
             } else {
                 System.out.println("Vui lòng nhập không để rỗng");
             }

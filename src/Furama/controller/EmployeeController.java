@@ -1,4 +1,4 @@
-package Furama.controller.impl;
+package Furama.controller;
 
 import Furama.model.Employee;
 import Furama.service.IEmployeeService;

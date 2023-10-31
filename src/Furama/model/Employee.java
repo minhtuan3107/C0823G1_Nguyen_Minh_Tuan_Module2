@@ -41,17 +41,6 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Nhân viên " +
-                "ID '" + getId() + '\'' +
-                ", Tên '" + getName() + '\'' +
-                ", Ngày sinh '" + getBirthday() + '\'' +
-                ", Giới tính '" + getGender() + '\'' +
-                ", Số CCCD " + getIdNumber() +
-                ", Số điện thoại" + getPhone() +
-                ", Email '" + getEmail() + '\'' +
-                ", Trình độ '" + level + '\'' +
-                ", Vị trí làm việc '" + location + '\'' +
-                ", Lương " + wage +
-                '}';
+        return "ID: " + getId() + " Tên: " + getName() + " Ngày sinh: " + getBirthday() + " Giới tính: " + getGender() + " Số CCCD: " + getIdNumber() + " Số điện thoại: " + getPhone() + " Email: " + getEmail() + " Trình độ: " + getLevel() + " Vị trí làm việc: " + getLocation() + " Lương: " + getWage();
     }
 }

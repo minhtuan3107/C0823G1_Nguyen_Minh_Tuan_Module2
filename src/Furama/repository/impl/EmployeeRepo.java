@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepo implements IEmployeeRepo {
-    private final String COMA = ",";
+    private final String COMMA = ",";
     private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataEmployee.csv";
 
     @Override
@@ -72,16 +72,16 @@ public class EmployeeRepo implements IEmployeeRepo {
     public List<String> convertToString(List<Employee> employeeList) {
         List<String> stringList = new ArrayList<>();
         for (Employee employee : employeeList) {
-            stringList.add(employee.getId() + COMA +
-                    employee.getName() + COMA +
-                    employee.getBirthday() + COMA +
-                    employee.getGender() + COMA +
-                    employee.getIdNumber() + COMA +
-                    employee.getPhone() + COMA +
-                    employee.getEmail() + COMA +
-                    employee.getLevel() + COMA +
-                    employee.getLocation() + COMA +
-                    employee.getWage() + COMA);
+            stringList.add(employee.getId() + COMMA +
+                    employee.getName() + COMMA +
+                    employee.getBirthday() + COMMA +
+                    employee.getGender() + COMMA +
+                    employee.getIdNumber() + COMMA +
+                    employee.getPhone() + COMMA +
+                    employee.getEmail() + COMMA +
+                    employee.getLevel() + COMMA +
+                    employee.getLocation() + COMMA +
+                    employee.getWage() + COMMA);
         }
         return stringList;
     }

@@ -7,4 +7,5 @@ public class Main {
         SchoolView schoolView = new SchoolView();
         schoolView.runMenu();
     }
+
 }

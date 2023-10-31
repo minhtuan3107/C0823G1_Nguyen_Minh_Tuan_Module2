@@ -1,4 +1,4 @@
-package Furama.controller.impl;
+package Furama.controller;
 
 import Furama.model.Customer;
 import Furama.service.ICustomerService;
@@ -7,7 +7,7 @@ import Furama.service.impl.CustomerService;
 import java.util.List;
 
 public class CustomerController {
-    private ICustomerService customerService = new CustomerService();
+    private final ICustomerService customerService = new CustomerService();
 
     public void edit(String id, Customer customer) {
         customerService.edit(id, customer);

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class HouseRepo implements IHouseRepo {
-    private final String COMA = ",";
+    private final String COMMA = ",";
     private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataHouse";
 
     @Override
@@ -23,13 +23,13 @@ public class HouseRepo implements IHouseRepo {
     public List<String> covertToString(Map<String, House> e) {
         List<String> strings = new ArrayList<>();
         e.forEach((String id, House house) -> {
-            strings.add(house.getId() + COMA +
-                    house.getName() + COMA +
-                    house.getAcreage() + COMA +
-                    house.getPrice() + COMA +
-                    house.getPeople() + COMA +
-                    house.getType() + COMA +
-                    house.getStandard() + COMA +
+            strings.add(house.getId() + COMMA +
+                    house.getName() + COMMA +
+                    house.getAcreage() + COMMA +
+                    house.getPrice() + COMMA +
+                    house.getPeople() + COMMA +
+                    house.getType() + COMMA +
+                    house.getStandard() + COMMA +
                     house.getFloor());
         });
         return strings;
@@ -41,7 +41,7 @@ public class HouseRepo implements IHouseRepo {
             if (str.isEmpty()) {
                 continue;
             }
-            String[] data = str.split(COMA);
+            String[] data = str.split(COMMA);
             if (data.length < 8) {
                 continue;
             }

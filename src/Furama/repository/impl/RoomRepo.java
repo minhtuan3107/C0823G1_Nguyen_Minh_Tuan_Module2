@@ -1,8 +1,8 @@
 package Furama.repository.impl;
 
-import Furama.utils.ReadAndWrite;
 import Furama.model.Room;
 import Furama.repository.IRoomRepo;
+import Furama.utils.ReadAndWrite;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,23 +10,25 @@ import java.util.List;
 import java.util.Map;
 
 public class RoomRepo implements IRoomRepo {
-    private final String COMA = ",";
+    private final String COMMA = ",";
     private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataRoom";
+
     @Override
     public void add(Room room) {
         Map<String, Room> roomList = convertToE(ReadAndWrite.read(FILE));
         roomList.put(room.getId(), room);
-        ReadAndWrite.write(convertToString(roomList),FILE,true);
+        ReadAndWrite.write(convertToString(roomList), FILE, true);
     }
+
     public List<String> convertToString(Map<String, Room> e) {
         List<String> strings = new ArrayList<>();
         e.forEach((String id, Room room) -> {
-            strings.add(room.getId() + COMA+
-                    room.getName() + COMA +
-                    room.getAcreage() + COMA +
-                    room.getPrice() + COMA+
-                    room.getPeople() + COMA +
-                    room.getType() + COMA +
+            strings.add(room.getId() + COMMA +
+                    room.getName() + COMMA +
+                    room.getAcreage() + COMMA +
+                    room.getPrice() + COMMA +
+                    room.getPeople() + COMMA +
+                    room.getType() + COMMA +
                     room.getServiceFree());
         });
         return strings;
@@ -38,7 +40,7 @@ public class RoomRepo implements IRoomRepo {
             if (str.isEmpty()) {
                 continue;
             }
-            String[] data = str.split(COMA);
+            String[] data = str.split(COMMA);
             if (data.length < 7) {
                 continue;
             }

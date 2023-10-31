@@ -6,15 +6,17 @@ import java.util.regex.Pattern;
 public class Regex {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập email để kiểm tra");
-        String email = scanner.nextLine();
-        String regexEmail = "^[\\w-\\.]+[0-9]+@(gmail\\.)+[\\w-]{3}$";
-        System.out.println("Email: " + email + " " + patternMatches(email, regexEmail));
+        String email;
+        String regexEmail;
+        do {
+            System.out.println("Nhập email để kiểm tra");
+            email = scanner.nextLine();
+            regexEmail = "^[A-Za-z1-9]{6,32}@[a-z]{2,12}\\.[a-z]{2,12}$";
+            System.out.println("Email: " + email + " " + patternMatches(email, regexEmail));
+        } while (true);
     }
 
     public static boolean patternMatches(String emailAddress, String regexPattern) {
-        return Pattern.compile(regexPattern)
-                .matcher(emailAddress)
-                .matches();
+        return Pattern.compile(regexPattern).matcher(emailAddress).matches();
     }
 }

@@ -4,7 +4,7 @@ import ss17_binaryfile.models.Spend;
 
 import java.util.List;
 
-public interface ISpendService<E> {
+public interface ISpendService {
     void add(Spend spend);
 
     List<Spend> getList();

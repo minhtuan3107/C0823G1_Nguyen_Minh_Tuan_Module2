@@ -254,8 +254,7 @@ public class FuramaView {
     //Employee
     public String searchName() {
         System.out.println("Nhap ten can tim");
-        String findName = checkEmpty();
-        return findName;
+        return checkEmpty();
     }
 
     public void outputSearchEmployee() {
@@ -354,8 +353,7 @@ public class FuramaView {
         String location = choiceLocation();
         int wage = inputWage(location);
         System.out.println("Mức lương của bạn khi làm " + location + " sẽ là: " + wage);
-        Employee employee = new Employee(idEmployee, nameEmployee, birthdayEmployee, gender, idNumber, phone, email, level, location, wage);
-        return employee;
+        return new Employee(idEmployee, nameEmployee, birthdayEmployee, gender, idNumber, phone, email, level, location, wage);
 
     }
 
@@ -611,7 +609,7 @@ public class FuramaView {
     }
 
     public void displayMenuCustomer() {
-        Integer choice;
+        int choice;
         do {
             try {
                 showMenuCustomer();
@@ -1063,10 +1061,8 @@ public class FuramaView {
 
     public String checkEmpty() {
         String str;
-        String[] strs;
         do {
             str = scanner.nextLine();
-            strs = str.split("");
             if (!(str.isEmpty())) {
                 return str;
             } else {

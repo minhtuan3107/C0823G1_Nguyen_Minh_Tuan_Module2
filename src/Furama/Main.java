@@ -1,6 +1,6 @@
 package Furama;
 
-import Furama.view.FuramaView;
+import Furama.views.FuramaView;
 
 public class Main {
     public static void main(String[] args) {

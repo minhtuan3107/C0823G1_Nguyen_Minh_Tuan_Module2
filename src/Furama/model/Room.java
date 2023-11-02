@@ -3,6 +3,9 @@ package Furama.model;
 public class Room extends Facility {
     private String serviceFree;
 
+    public Room() {
+    }
+
     public Room(String id, String name, int acreage, int price, int people, String type, String serviceFree) {
         super(id, name, acreage, price, people, type);
         this.serviceFree = serviceFree;

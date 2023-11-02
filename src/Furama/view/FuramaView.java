@@ -1,6 +1,8 @@
 package Furama.view;
 
-import Furama.controller.*;
+import Furama.controller.CustomerController;
+import Furama.controller.EmployeeController;
+import Furama.controller.FacilityController;
 import Furama.model.*;
 
 import java.time.LocalDate;
@@ -8,6 +10,7 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -15,6 +18,7 @@ public class FuramaView {
     private static final Scanner scanner = new Scanner(System.in);
     private final EmployeeController employeeController = new EmployeeController();
     private final CustomerController customerController = new CustomerController();
+    private final FacilityController facilityController = new FacilityController();
     //Phan hien thi
 
     public void showFurama() {
@@ -26,10 +30,104 @@ public class FuramaView {
         System.out.println("Mời chọn");
     }
 
+    public void showMenuFacility() {
+        System.out.println("1. Hiển thị list Facility");
+        System.out.println("2. Thêm mới Facility");
+        System.out.println("3. Hiển thị danh sách Facility cần bảo trì");
+        System.out.println("4. Xóa facility");
+        System.out.println("5. Quay về");
+    }
 
+    public void displayMenuFacility() {
+        int choice;
+        do {
+            try {
+                showMenuFacility();
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        displayFacility();
+                        break;
+                    case 2:
+                        displayMenuAddFacility();
+                        break;
+                    case 3:
+                        displayListMaintenance();
+                        break;
+                    case 4:
+                        facilityController.delete(removeFacility());
+                        break;
+                    case 5:
+                        return;
+                    default:
+                        System.out.println("Vui lòng chọn 1 - 5");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
 
+    public void displayListMaintenance() {
+        Map<Facility, Integer> facilityIntegerMap = facilityController.displayListMaintenance();
+        if (facilityIntegerMap.isEmpty()) {
+            System.out.println("DS trống");
+        } else {
+            for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+                System.out.println(facilityIntegerEntry.getKey() + "" + facilityIntegerEntry.getValue());
+            }
+        }
+    }
 
+    public String removeFacility() {
+        System.out.println("Nhập mã dịch vụ ");
+        return checkEmpty();
+    }
 
+    public void showMenuAddFacility() {
+        System.out.println("1. Thêm mới Villa");
+        System.out.println("2. Thêm mới House");
+        System.out.println("3. Thêm mới Room");
+        System.out.println("4. Trở về menu");
+    }
+
+    public void displayMenuAddFacility() {
+        int choice;
+        do {
+            try {
+                showMenuAddFacility();
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        addVilla();
+                        break;
+                    case 2:
+                        addHouse();
+                        break;
+                    case 3:
+                        addRoom();
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        System.out.println("Vui lòng nhập từ 1 -4");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
+
+    public void displayFacility() {
+        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+        if (facilityIntegerMap.isEmpty()) {
+            System.out.println("DS trống");
+        } else {
+            for (Map.Entry<Facility, Integer> facilityEntry : facilityIntegerMap.entrySet()) {
+                System.out.println(facilityEntry.getKey() + "" + facilityEntry.getValue());
+            }
+        }
+    }
 
     public void displayFurama() {
         int choice;
@@ -45,6 +143,7 @@ public class FuramaView {
                         displayMenuCustomer();
                         break;
                     case 3:
+                        displayMenuFacility();
                         break;
                     case 4:
                         System.exit(4);

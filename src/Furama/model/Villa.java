@@ -5,8 +5,6 @@ public class Villa extends Facility {
     private int areaPool;
     private int floor;
 
-    public Villa() {
-    }
 
     public Villa(String id, String name, int acreage, int price, int people, String type, String standard, int areaPool, int floor) {
         super(id, name, acreage, price, people, type);

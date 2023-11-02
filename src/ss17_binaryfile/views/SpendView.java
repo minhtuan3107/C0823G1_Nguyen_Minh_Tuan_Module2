@@ -3,6 +3,8 @@ package ss17_binaryfile.views;
 import ss17_binaryfile.controllers.SpendController;
 import ss17_binaryfile.models.Spend;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,6 +65,7 @@ public class SpendView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+
             }
         } while (true);
     }

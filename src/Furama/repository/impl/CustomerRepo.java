@@ -72,7 +72,11 @@ public class CustomerRepo implements ICustomerRepo {
         String[] line;
         for (String str : stringList) {
             line = str.split(COMMA);
-            customerList.add(new Customer(line[0], line[1], line[2], line[3], Integer.parseInt(line[4]), Integer.parseInt(line[5]), line[6], line[7], line[8]));
+            customerList.add(new Customer(line[0],
+                    line[1], line[2], line[3],
+                    Integer.parseInt(line[4]),
+                    Integer.parseInt(line[5]),
+                    line[6], line[7], line[8]));
         }
         return customerList;
     }

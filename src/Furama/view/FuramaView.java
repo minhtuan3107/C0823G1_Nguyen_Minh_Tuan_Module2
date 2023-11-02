@@ -11,15 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static java.lang.Integer.parseInt;
-
 public class FuramaView {
     private static final Scanner scanner = new Scanner(System.in);
     private final EmployeeController employeeController = new EmployeeController();
     private final CustomerController customerController = new CustomerController();
-    private final HouseController houseController = new HouseController();
-    private final VillaController villaController = new VillaController();
-    private final RoomController roomController = new RoomController();
     //Phan hien thi
 
     public void showFurama() {
@@ -27,155 +22,21 @@ public class FuramaView {
         System.out.println("1. Quản lý nhân viên");
         System.out.println("2. Quản lý khách hàng");
         System.out.println("3. Quản lý cơ sở vật chất");
+        System.out.println("4. Thoát");
         System.out.println("Mời chọn");
     }
 
-    public void showMenuFacility() {
-        System.out.println("= Facility =");
-        System.out.println("1. Quản lý House");
-        System.out.println("2. Quản lý Room");
-        System.out.println("3. Quản lý Villa");
-        System.out.println("4. Thoát");
-    }
 
-    public void displayMenuFacility() {
-        int choice;
-        do {
-            try {
-                showMenuFacility();
-                choice = parseInt(scanner.nextLine());
-                switch (choice) {
-                    case 1:
-                        displayMenuHouse();
-                        break;
-                    case 2:
-                        displayMenuRoom();
-                        break;
-                    case 3:
-                        displayMenuVilla();
-                        break;
-                    case 4:
-                        return;
-                    default:
-                        System.out.println("Vui lòng nhập từ 1 - 4");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số");
-            }
-        } while (true);
-    }
 
-    public void displayMenuVilla() {
-        int choice;
-        do {
-            try {
-                showMenuVilla();
-                choice = parseInt(scanner.nextLine());
-                switch (choice) {
-                    case 1:
-                        villaController.add(addVilla());
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        return;
-                    default:
-                        System.out.println("Vui lòng nhập từ 1 - 5");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số");
-            }
-        } while (true);
-    }
 
-    public void displayMenuHouse() {
-        int choice;
-        do {
-            try {
-                showMenuHouse();
-                choice = parseInt(scanner.nextLine());
-                switch (choice) {
-                    case 1:
-                        houseController.add(addHouse());
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        return;
-                    default:
-                        System.out.println("Vui lòng nhập từ 1 - 5");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số");
-            }
-        } while (true);
-    }
 
-    public void displayMenuRoom() {
-        int choice;
-        do {
-            try {
-                shoMenuRoom();
-                choice = parseInt(scanner.nextLine());
-                switch (choice) {
-                    case 1:
-                        roomController.add(addRoom());
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        return;
-                    default:
-                        System.out.println("Vui lòng nhập từ 1 - 5");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Vui lòng nhập số");
-            }
-        } while (true);
-    }
-
-    public void showMenuHouse() {
-        System.out.println("1. Thêm mới House");
-        System.out.println("2. Hiển thị House -- Đang update");
-        System.out.println("3. Xóa House -- Đang update");
-        System.out.println("4. Hiển thị danh sách House cần bảo trì -- Đang update");
-        System.out.println("5. Trở lại");
-    }
-
-    public void shoMenuRoom() {
-        System.out.println("1. Thêm mới Room");
-        System.out.println("2. Hiển thị Room -- Đang update");
-        System.out.println("3. Xóa room -- Đang update");
-        System.out.println("4. Hiển thị danh sách Room bảo trì -- Đang update");
-        System.out.println("5. Trở lại");
-    }
-
-    public void showMenuVilla() {
-        System.out.println("1. Thêm mới Villa");
-        System.out.println("2. Hiển thị Villa -- Đang update");
-        System.out.println("3. Xóa Villa -- Đang update");
-        System.out.println("4. Hiển thị danh sách Villa bảo trì -- Đang update");
-        System.out.println("5. Trở lại");
-    }
 
     public void displayFurama() {
         int choice;
         do {
             try {
                 showFurama();
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayMenuEmployee();
@@ -184,7 +45,9 @@ public class FuramaView {
                         displayMenuCustomer();
                         break;
                     case 3:
-                        displayMenuFacility();
+                        break;
+                    case 4:
+                        System.exit(4);
                     default:
                         System.out.println("Vui lòng nhập từ 1 - 3");
                 }
@@ -210,7 +73,7 @@ public class FuramaView {
             try {
                 showMenuEmployee();
                 System.out.println("Mời nhập");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         displayEmployee();
@@ -219,7 +82,7 @@ public class FuramaView {
                         employeeController.add(addEmployee());
                         break;
                     case 3:
-                        editEmployee();
+                        choiceEditEmployee();
                         break;
                     case 4:
                         employeeController.delete(inputIdDelete());
@@ -286,6 +149,99 @@ public class FuramaView {
         } else {
             for (Employee employee : employees) {
                 System.out.println(employee);
+            }
+        }
+    }
+
+    public void choiceEditEmployee() {
+        int choice;
+        do {
+            try {
+                System.out.println("Chọn chức năng edit");
+                System.out.println("1. Edit tất cả");
+                System.out.println("2. Edit từng thứ");
+                System.out.println("3. Thoát edit");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        editEmployee();
+                        break;
+                    case 2:
+                        editEmployeeV1();
+                        break;
+                    case 3:
+                        return;
+                    default:
+                        System.out.println("Chọn 1 - 3");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số");
+            }
+        } while (true);
+    }
+
+    public void editEmployeeV1() {
+        int choice;
+        String idEdit = checkIdEdit();
+        List<Employee> employees = employeeController.getList();
+        for (Employee employee : employees) {
+            if (employee.getId().equals(idEdit)) {
+                do {
+                    try {
+                        System.out.println("1. Edit tên: " + employee.getName());
+                        System.out.println("2. Edit birthday: " + employee.getBirthday());
+                        System.out.println("3. Edit giới tính: " + employee.getGender());
+                        System.out.println("4. Edit CCCD: " + employee.getIdNumber());
+                        System.out.println("5. Edit Sdt: " + employee.getPhone());
+                        System.out.println("6. Edit Email: " + employee.getEmail());
+                        System.out.println("7. Edit trình độ: " + employee.getLevel());
+                        System.out.println("8. Edit vị trí làm việc: " + employee.getLocation());
+                        System.out.println("9. Thoát edit");
+                        choice = Integer.parseInt(scanner.nextLine());
+                        switch (choice) {
+                            case 1:
+                                System.out.println("Nhập tên");
+                                employee.setName(checkName());
+                                break;
+                            case 2:
+                                System.out.println("Nhập birthday");
+                                employee.setBirthday(checkBirthday());
+                                break;
+                            case 3:
+                                System.out.println("Chọn giới tính");
+                                employee.setGender(choiceGender());
+                                break;
+                            case 4:
+                                System.out.println("Nhập CCCD");
+                                employee.setIdNumber(idNumber());
+                                break;
+                            case 5:
+                                System.out.println("Nhập SDT");
+                                employee.setPhone(checkPhone());
+                                break;
+                            case 6:
+                                System.out.println("Nhập Email");
+                                employee.setEmail(checkEmail());
+                                break;
+                            case 7:
+                                System.out.println("7. Chọn trình độ");
+                                employee.setLevel(choiceLevel());
+                                break;
+                            case 8:
+                                System.out.println("8. Chọn vị trí làm việc");
+                                employee.setLocation(choiceLocation());
+                                employee.setWage(inputWage(employee.getLocation()));
+                                break;
+                            case 9:
+                                return;
+                            default:
+                                System.out.println("Vui lòng chọn 1 - 8");
+                        }
+                        employeeController.edit(idEdit, employee);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Vui lòng nhập số");
+                    }
+                } while (true);
             }
         }
     }
@@ -396,7 +352,7 @@ public class FuramaView {
                 System.out.println("4. Giám sát");
                 System.out.println("5. Quản lý");
                 System.out.println("6. Giám đốc");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Lễ tân";
@@ -425,7 +381,7 @@ public class FuramaView {
         do {
             idNumberCheck = checkEmpty();
             if (patternMatches(idNumberCheck, regexNummber)) {
-                return parseInt(idNumberCheck);
+                return Integer.parseInt(idNumberCheck);
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng 9 - 12 số");
             }
@@ -438,7 +394,7 @@ public class FuramaView {
             try {
                 System.out.println("1. Nam");
                 System.out.println("2. Nữ");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Nam";
@@ -461,7 +417,7 @@ public class FuramaView {
                 System.out.println("2. Cao đẳng");
                 System.out.println("3. Đại học");
                 System.out.println("4. Sau đại học");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Trung cấp";
@@ -499,7 +455,7 @@ public class FuramaView {
         do {
             phone = checkEmpty();
             if (patternMatches(phone, regexPhone)) {
-                return parseInt(phone);
+                return Integer.parseInt(phone);
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng sdt");
             }
@@ -580,22 +536,6 @@ public class FuramaView {
         } while (true);
     }
 
-//    public String checkIdEmployee() {
-//        String idCheck;
-//        String regexId = "^(NV-)+[0-9]{4}$";
-//        do {
-//            idCheck = checkEmpty();
-//            if (patternMatches(idCheck, regexId)) {
-//                if (checkIdInput(idCheck)) {
-//                    return idCheck;
-//                } else {
-//                    System.out.println("ID đã trùng trên hệ thống");
-//                }
-//            } else {
-//                System.out.println("Vui lòng nhập đúng định dạng NV-1234");
-//            }
-//        } while (true);
-//    }
 
     // Phan Customer
     public void showMenuCustomer() {
@@ -623,7 +563,7 @@ public class FuramaView {
                         customerController.add(addCustomer());
                         break;
                     case 3:
-                        editCustomer();
+                        choiceEditCustomer();
                         break;
                     case 4:
                         customerController.delete(deleteIdCustomer());
@@ -655,6 +595,94 @@ public class FuramaView {
         }
     }
 
+    public void choiceEditCustomer() {
+        int choice;
+        do {
+            try {
+                System.out.println("1. Sửa tất cả");
+                System.out.println("2. Sửa chọn");
+                System.out.println("3. Thoát");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        editCustomer();
+                        break;
+                    case 2:
+                        editCustomerV2();
+                        break;
+                    case 3:
+                        return;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Lỗi ngoại lệ");
+            }
+        } while (true);
+    }
+
+    public void editCustomerV2() {
+        List<Customer> customerList = customerController.getList();
+        String id = checkIdEditCustomer();
+        int choice;
+        for (Customer customer : customerList) {
+            if (customer.getId().equals(id)) {
+                do {
+                    try {
+                        System.out.println("1. Sửa tên: " + customer.getName());
+                        System.out.println("2. Sửa birthday: " + customer.getBirthday());
+                        System.out.println("3. Sửa giới tính: " + customer.getGender());
+                        System.out.println("4. Sửa CCCD: " + customer.getIdNumber());
+                        System.out.println("5. Sửa phone: " + customer.getPhone());
+                        System.out.println("6. Sửa email: " + customer.getEmail());
+                        System.out.println("7. Sửa loại khách hàng: " + customer.getType());
+                        System.out.println("8. Sửa địa chỉ: " + customer.getAddress());
+                        System.out.println("9. Thoát");
+                        choice = Integer.parseInt(scanner.nextLine());
+                        switch (choice) {
+                            case 1:
+                                System.out.println("Nhập tên");
+                                customer.setName(checkName());
+                                break;
+                            case 2:
+                                System.out.println("Nhập birthday");
+                                customer.setBirthday(checkBirthday());
+                                break;
+                            case 3:
+                                System.out.println("Chọn giới tính");
+                                customer.setGender(choiceGender());
+                                break;
+                            case 4:
+                                System.out.println("Nhập CCCD");
+                                customer.setIdNumber(idNumber());
+                                break;
+                            case 5:
+                                System.out.println("Nhập SDT");
+                                customer.setPhone(checkPhone());
+                                break;
+                            case 6:
+                                System.out.println("7. Nhập email");
+                                customer.setEmail(checkEmail());
+                                break;
+                            case 7:
+                                System.out.println("Chọn loại khách hàng");
+                                customer.setType(choiceType());
+                                break;
+                            case 8:
+                                System.out.println("Nhập địa chỉ khách hàng");
+                                customer.setAddress(checkEmpty());
+                                break;
+                            case 9:
+                                return;
+                            default:
+                                System.out.println("Vui lòng chọn từ 1 - 8");
+                        }
+                        customerController.edit(id, customer);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Vui lòng nhập số");
+                    }
+                } while (true);
+            }
+        }
+    }
 
     public void editCustomer() {
         System.out.println("Nhập ID cần sửa");
@@ -691,9 +719,8 @@ public class FuramaView {
         System.out.println("Bạn có muốn xóa không y/n");
         if (!checkStatus()) {
             return idDelete;
-        } else {
-            System.out.println("Bạn không xóa");
         }
+        System.out.println("Bạn không xóa");
         return null;
     }
 
@@ -755,7 +782,7 @@ public class FuramaView {
                 System.out.println("3. Gold");
                 System.out.println("4. Sliver");
                 System.out.println("5. Member");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Diamond";
@@ -794,15 +821,13 @@ public class FuramaView {
 //    }
     public String inputIdCustomer() {
         List<Customer> customerList = customerController.getList();
-        String[] text;
-        int count;
-        String str = null;
+        int text = 1000;
+        String[] str;
         for (Customer customer : customerList) {
-            text = customer.getId().split("-");
-            str = text[1];
+            str = customer.getId().split("-");
+            text = Integer.parseInt(str[1]);
         }
-        count = Integer.parseInt(str);
-        return "KH-" + (count + 1);
+        return "KH-" + (text + 1);
     }
 
     public Villa addVilla() {
@@ -831,7 +856,7 @@ public class FuramaView {
         int floor;
         do {
             try {
-                floor = parseInt(scanner.nextLine());
+                floor = Integer.parseInt(scanner.nextLine());
                 if (floor > 1) {
                     return floor;
                 } else {
@@ -852,7 +877,7 @@ public class FuramaView {
                 System.out.println("3. ***");
                 System.out.println("4. ****");
                 System.out.println("5. *****");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "1 sao";
@@ -881,7 +906,7 @@ public class FuramaView {
                 System.out.println("2. Thuê theo tháng");
                 System.out.println("3. Thuê theo ngày");
                 System.out.println("4. Thuê theo giờ");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "thuê theo năm";
@@ -904,7 +929,7 @@ public class FuramaView {
         int people;
         do {
             try {
-                people = parseInt(scanner.nextLine());
+                people = Integer.parseInt(scanner.nextLine());
                 if (people > 1 && people < 20) {
                     return people;
                 } else {
@@ -920,7 +945,7 @@ public class FuramaView {
         int price;
         do {
             try {
-                price = parseInt(scanner.nextLine());
+                price = Integer.parseInt(scanner.nextLine());
                 if (price > 1) {
                     return price;
                 } else {
@@ -936,7 +961,7 @@ public class FuramaView {
         int area;
         do {
             try {
-                area = parseInt(scanner.nextLine());
+                area = Integer.parseInt(scanner.nextLine());
                 if (area >= 30) {
                     return area;
                 } else {
@@ -998,7 +1023,7 @@ public class FuramaView {
             try {
                 System.out.println("1.Nuoc uong mien phi");
                 System.out.println("2.Phuong tien di lai mien phi");
-                choice = parseInt(scanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
                         return "Nuoc uong mien phi";

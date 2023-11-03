@@ -27,9 +27,8 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public void add(Facility facility) {
-        int count = getCount();
         Map<Facility, Integer> facilityMap = new LinkedHashMap<>();
-        facilityMap.put(facility, count + 1);
+        facilityMap.put(facility, 0);
         ReadAndWrite.write(covertToString(facilityMap), FILE, true);
     }
 
@@ -64,7 +63,6 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     public List<String> covertToString(Map<Facility, Integer> e) {
-        int count = getCount();
         List<String> strings = new ArrayList<>();
         e.forEach((Facility facility, Integer id) -> {
             if (facility instanceof House) {

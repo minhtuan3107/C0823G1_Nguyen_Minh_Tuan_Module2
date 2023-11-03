@@ -38,7 +38,7 @@ public class FuramaView {
                     case 4:
                         bookingView.displayMenuBooking();
                     case 5:
-                        System.exit(5);
+                        return;
                     default:
                         System.out.println("Vui lòng nhập từ 1 - 3");
                 }

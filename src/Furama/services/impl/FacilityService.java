@@ -15,6 +15,10 @@ public class FacilityService implements IFacilityService {
         facilityRepository.add(facility);
     }
 
+    public void edit(String id, Facility facility) {
+        facilityRepository.edit(id, facility);
+    }
+
     @Override
     public void delete(String id) {
         facilityRepository.delete(id);

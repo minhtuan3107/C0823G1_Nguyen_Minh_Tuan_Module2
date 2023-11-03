@@ -12,4 +12,6 @@ public interface IFacilityService {
     Map<Facility, Integer> getList();
 
     Map<Facility, Integer> displayListMaintenance();
+
+    void edit(String id, Facility facility);
 }

@@ -32,6 +32,16 @@ public class FacilityRepository implements IFacilityRepository {
         ReadAndWrite.write(covertToString(facilityMap), FILE, true);
     }
 
+    public void edit(String id, Facility facility) {
+        Map<Facility, Integer> facilityIntegerMap = getList();
+        for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+            if (facilityIntegerEntry.getKey().getId().equals(id)) {
+                facilityIntegerEntry.setValue(facilityIntegerEntry.getValue() + 1);
+            }
+        }
+        ReadAndWrite.write(covertToString(facilityIntegerMap), FILE, false);
+    }
+
     @Override
     public void delete(String id) {
         Map<Facility, Integer> facilityIntegerMap = getList();

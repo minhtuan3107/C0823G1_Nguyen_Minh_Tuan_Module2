@@ -13,6 +13,10 @@ public class FacilityController {
         facilityService.add(facility);
     }
 
+    public void edit(String id, Facility facility) {
+        facilityService.edit(id, facility);
+    }
+
     public void delete(String id) {
         facilityService.delete(id);
     }

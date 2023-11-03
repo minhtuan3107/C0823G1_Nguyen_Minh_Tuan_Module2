@@ -56,6 +56,9 @@ public class BookingView {
                         displayContract();
                         break;
                     case 5:
+                        editContract();
+                        break;
+                    case 6:
                         return;
                     default:
                         System.out.println("Vui lòng nhập từ 1 - 5 ");
@@ -63,6 +66,32 @@ public class BookingView {
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
             }
+        } while (true);
+    }
+
+    public void editContract() {
+        String id = checkIdContract();
+        String idBooking = checkIdBooking();
+        System.out.println("Nhập số tiền cọc");
+        String deposit = validate.checkEmpty();
+        System.out.println("Nhập số tiền phải thanh toán");
+        String price = validate.checkEmpty();
+        Contract contract = new Contract(id, idBooking, deposit, price);
+        contractController.edit(id, contract);
+    }
+
+    public String checkIdContract() {
+        System.out.println("Nhập ID hợp đồng cần sửa");
+        List<Contract> contractList = contractController.getList();
+        String id;
+        do {
+            id = validate.checkEmpty();
+            for (Contract contract : contractList) {
+                if (contract.getId().equals(id)) {
+                    return id;
+                }
+            }
+            System.out.println("Không tìm thấy ID vui lòng nhập lại");
         } while (true);
     }
 
@@ -126,6 +155,13 @@ public class BookingView {
         System.out.println("Nhập ID dịch vụ");
         String idService = checkIdServiceLive();
         Booking booking = new Booking(id, dateBooking, dateStart, dateEnd, idCustomer, idService);
+        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
+            if (map.getKey().getId().equals(idService)) {
+                map.setValue(+1);
+                facilityController.edit(idService, map.getKey());
+            }
+        }
         return booking;
     }
 
@@ -151,6 +187,9 @@ public class BookingView {
                     for (Booking booking : bookingList) {
                         if (booking.getIdService().equals(map.getKey().getId())) {
                             count = 2;
+                            if (map.getValue() >= 5) {
+                                count = 3;
+                            }
                         }
                     }
                 }
@@ -159,10 +198,11 @@ public class BookingView {
                 return idService;
             } else if (count == 2) {
                 System.out.println("Dịch vụ đã có người sử dụng vui lòng chọn dịch vụ khác");
+            } else if (count == 3) {
+                System.out.println("Dịch vụ đang cần được bảo trì vui lòng chọn dịch vụ khác");
             } else {
                 System.out.println("Không tìm thấy mã phòng");
             }
-
         } while (true);
     }
 

@@ -186,8 +186,10 @@ public class EmployeeView {
                 return 10000000;
             case "Quản lý":
                 return 15000000;
+            case "Giám đốc":
+                return 50000000;
         }
-        return 50000000;
+        return 0;
     }
 
     public void choiceEditEmployee() {

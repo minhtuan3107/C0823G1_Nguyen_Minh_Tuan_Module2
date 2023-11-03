@@ -13,29 +13,32 @@ import java.util.List;
 import java.util.Map;
 
 public class FacilityRepository implements IFacilityRepository {
-    private static final Map<Facility, Integer> facilityMap = new LinkedHashMap<>();
     private int count;
     private final String FILE = "D:\\module2Again\\src\\Furama\\utils\\DataFacility.csv";
     private final String COMMA = ",";
 
-    static {
-        facilityMap.put(new Villa("SVVL-1000", "Vip", 10, 100, 3, "month", "3 sao", 1000, 10), 2);
-        facilityMap.put(new House("SVHO-0000", "Normal", 10, 1000, 3, "month", "normal", 2), 3);
-        facilityMap.put(new Room("SVRO-0002", "Luxury", 15, 1500, 2, "day", "free"), 0);
+    public int getCount() {
+        Map<Facility, Integer> facilityIntegerMap = getList();
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
+            count = map.getValue();
+        }
+        return count + 1;
     }
 
     @Override
     public void add(Facility facility) {
-        count++;
-        facilityMap.put(facility, count);
+        int count = getCount();
+        Map<Facility, Integer> facilityMap = new LinkedHashMap<>();
+        facilityMap.put(facility, count + 1);
         ReadAndWrite.write(covertToString(facilityMap), FILE, true);
     }
 
     @Override
     public void delete(String id) {
-        for (Map.Entry<Facility, Integer> map : facilityMap.entrySet()) {
+        Map<Facility, Integer> facilityIntegerMap = getList();
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
             if (id.equals(map.getKey().getId())) {
-                facilityMap.remove(map.getKey());
+                facilityIntegerMap.remove(map.getKey());
                 break;
             }
         }
@@ -43,13 +46,16 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public Map<Facility, Integer> getList() {
-        return facilityMap;
+        List<String> stringList = ReadAndWrite.read(FILE);
+        Map<Facility, Integer> facilityIntegerMap = convertToE(stringList);
+        return facilityIntegerMap;
     }
 
     @Override
     public Map<Facility, Integer> displayListMaintenance() {
+        Map<Facility, Integer> facilityIntegerMap = getList();
         Map<Facility, Integer> integerMap = new LinkedHashMap<>();
-        for (Map.Entry<Facility, Integer> map : facilityMap.entrySet()) {
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
             if (map.getValue() >= 5) {
                 integerMap.put(map.getKey(), map.getValue());
             }
@@ -58,6 +64,7 @@ public class FacilityRepository implements IFacilityRepository {
     }
 
     public List<String> covertToString(Map<Facility, Integer> e) {
+        int count = getCount();
         List<String> strings = new ArrayList<>();
         e.forEach((Facility facility, Integer id) -> {
             if (facility instanceof House) {
@@ -68,7 +75,7 @@ public class FacilityRepository implements IFacilityRepository {
                         facility.getPeople() + COMMA +
                         facility.getType() + COMMA +
                         ((House) facility).getStandard() + COMMA +
-                        ((House) facility).getFloor());
+                        ((House) facility).getFloor() + id);
             } else if (facility instanceof Villa) {
                 strings.add(facility.getId() + COMMA +
                         facility.getName() + COMMA +
@@ -78,7 +85,8 @@ public class FacilityRepository implements IFacilityRepository {
                         facility.getType() + COMMA +
                         ((Villa) facility).getStandard() + COMMA +
                         ((Villa) facility).getAreaPool() + COMMA +
-                        ((Villa) facility).getFloor());
+                        ((Villa) facility).getFloor() + COMMA +
+                        id);
             } else {
                 strings.add(facility.getId() + COMMA +
                         facility.getName() + COMMA +
@@ -86,25 +94,28 @@ public class FacilityRepository implements IFacilityRepository {
                         facility.getPrice() + COMMA +
                         facility.getPeople() + COMMA +
                         facility.getType() + COMMA +
-                        ((Room) facility).getServiceFree());
+                        ((Room) facility).getServiceFree() + COMMA +
+                        id);
             }
         });
         return strings;
     }
 
-    public Map<String, House> convertToE(List<String> strings) {
-        Map<String, House> houses = new LinkedHashMap<>();
+    public Map<Facility, Integer> convertToE(List<String> strings) {
+        Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
+        String[] data;
+        String[] data1;
         for (String str : strings) {
-            if (str.isEmpty()) {
-                continue;
+            data = str.split(COMMA);
+            data1 = data[0].split("-");
+            if (data1[0].equals("SVVL")) {
+                facilityIntegerMap.put(new Villa(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8])), Integer.parseInt(data[9]));
+            } else if (data1[0].equals("SVHO")) {
+                facilityIntegerMap.put(new House(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7])), Integer.parseInt(data[8]));
+            } else {
+                facilityIntegerMap.put(new Room(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]), Integer.parseInt(data[7]));
             }
-            String[] data = str.split(COMMA);
-            if (data.length < 8) {
-                continue;
-            }
-            houses.put(data[0], new House(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7])));
-
         }
-        return houses;
+        return facilityIntegerMap;
     }
 }

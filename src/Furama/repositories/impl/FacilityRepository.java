@@ -47,7 +47,8 @@ public class FacilityRepository implements IFacilityRepository {
         Map<Facility, Integer> facilityIntegerMap = getList();
         for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
             if (id.equals(map.getKey().getId())) {
-                facilityIntegerMap.remove(map.getKey());
+                facilityIntegerMap.remove(map);
+                ReadAndWrite.write(covertToString(facilityIntegerMap), FILE, false);
                 break;
             }
         }
@@ -83,7 +84,7 @@ public class FacilityRepository implements IFacilityRepository {
                         facility.getPeople() + COMMA +
                         facility.getType() + COMMA +
                         ((House) facility).getStandard() + COMMA +
-                        ((House) facility).getFloor() + id);
+                        ((House) facility).getFloor() + COMMA + id);
             } else if (facility instanceof Villa) {
                 strings.add(facility.getId() + COMMA +
                         facility.getName() + COMMA +
@@ -120,7 +121,7 @@ public class FacilityRepository implements IFacilityRepository {
                 facilityIntegerMap.put(new Villa(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8])), Integer.parseInt(data[9]));
             } else if (data1[0].equals("SVHO")) {
                 facilityIntegerMap.put(new House(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7])), Integer.parseInt(data[8]));
-            } else {
+            } else if (data1[0].equals("SVRO")) {
                 facilityIntegerMap.put(new Room(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]), Integer.parseInt(data[7]));
             }
         }

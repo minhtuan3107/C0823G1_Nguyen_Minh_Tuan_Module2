@@ -8,6 +8,7 @@ public class FuramaView {
     private final CustomerView customerView = new CustomerView();
     private final EmployeeView employeeView = new EmployeeView();
     private final BookingView bookingView = new BookingView();
+    private final PromotionView promotionView = new PromotionView();
 
     public void showFurama() {
         System.out.println("= FURAMA =");
@@ -15,7 +16,8 @@ public class FuramaView {
         System.out.println("2. Quản lý khách hàng");
         System.out.println("3. Quản lý cơ sở vật chất");
         System.out.println("4. Quản lý booking");
-        System.out.println("5. Thoát");
+        System.out.println("5. Quản lý khuyến mãi");
+        System.out.println("6. Thoát");
         System.out.println("Mời chọn");
     }
 
@@ -38,6 +40,9 @@ public class FuramaView {
                     case 4:
                         bookingView.displayMenuBooking();
                     case 5:
+                        promotionView.displayMenuPromotion();
+                        break;
+                    case 6:
                         return;
                     default:
                         System.out.println("Vui lòng nhập từ 1 - 3");

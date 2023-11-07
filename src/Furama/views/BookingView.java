@@ -164,6 +164,7 @@ public class BookingView {
         }
         return booking;
     }
+    
 
     public String checkIdServiceLive() {
         Map<Facility, Integer> facilityIntegerMap = facilityController.getList();

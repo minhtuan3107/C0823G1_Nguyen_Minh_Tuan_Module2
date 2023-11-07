@@ -41,7 +41,7 @@ public class FacilityView {
                         displayListMaintenance();
                         break;
                     case 4:
-                        facilityController.delete(removeFacility());
+                        facilityController.delete(checkIdLive());
                         break;
                     case 5:
                         return;
@@ -90,13 +90,24 @@ public class FacilityView {
 
     public String checkIdRoom() {
         String idRoom;
-        String regexId = "^(SVRO-)+[0-9]{1}";
+        String regexId = "^(SVRO-)+[0-9]{4}";
+        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+        boolean flag = false;
         do {
             idRoom = validate.checkEmpty();
             if (patternMatches(idRoom, regexId)) {
+                for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+                    if (facilityIntegerEntry.getKey().getId().equals(idRoom)) {
+                        flag = true;
+                    }
+                }
+            } else {
+                System.out.println("Vui lòng nhập đúng định dạng SVRO-XXXX");
+            }
+            if (flag) {
                 return idRoom;
             } else {
-                System.out.println("Vui lòng nhập đúng định dạng SVRO-1");
+                System.out.println("ID đã tồn tại trên hệ thống vui lòng nhập lại");
             }
         } while (true);
     }
@@ -300,26 +311,48 @@ public class FacilityView {
 
     public String checkIdHouse() {
         String idHouse;
-        String regexId = "^(SVHO-)+[0-9]{1}";
+        String regexId = "^(SVHO-)+[0-9]{4}";
+        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+        boolean flag = false;
         do {
             idHouse = validate.checkEmpty();
             if (patternMatches(idHouse, regexId)) {
-                return idHouse;
+                for (Map.Entry<Facility, Integer> integerEntry : facilityIntegerMap.entrySet()) {
+                    if (integerEntry.getKey().getId().equals(idHouse)) {
+                        flag = true;
+                    }
+                }
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng SVHO-1");
+            }
+            if (flag) {
+                return idHouse;
+            } else {
+                System.out.println("Vui lòng nhập lại ID đã tồn tại trên hệ thống");
             }
         } while (true);
     }
 
     public String checkIdVilla() {
         String idCheck;
-        String regexId = "^(SVVL-)+[0-9]{1}";
+        String regexId = "^(SVVL-)+[0-9]{4}";
+        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+        boolean flag = false;
         do {
             idCheck = validate.checkEmpty();
             if (patternMatches(idCheck, regexId)) {
-                return idCheck;
+                for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
+                    if (map.getKey().getId().equals(idCheck)) {
+                        flag = true;
+                    }
+                }
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng SVVL-1");
+            }
+            if (flag) {
+                return idCheck;
+            } else {
+                System.out.println("ID đã tồn tại trên hệ thống vui lòng nhập lại");
             }
         } while (true);
     }
@@ -368,8 +401,32 @@ public class FacilityView {
         }
     }
 
-    public String removeFacility() {
-        System.out.println("Nhập mã dịch vụ ");
-        return validate.checkEmpty();
+    public String checkIdLive() {
+        do {
+            System.out.println("Nhập mã dịch vụ cần xóa ");
+            String id = scanner.nextLine();
+            Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
+            for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
+                if (facilityIntegerEntry.getKey().getId().equals(id)) {
+                    if (confirm()) {
+                        System.out.println("Xóa thành công");
+                        return id;
+                    } else {
+                        System.out.println("Bạn không xóa");
+                        break;
+                    }
+                }
+            }
+            System.out.println("ID không tồn tại vui lòng nhập lại");
+        } while (true);
+    }
+
+    public boolean confirm() {
+        System.out.println("Bạn có muốn xóa không ? y/n");
+        String check = scanner.nextLine();
+        if (check.equalsIgnoreCase("y")) {
+            return true;
+        }
+        return false;
     }
 }

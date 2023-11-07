@@ -5,6 +5,7 @@ import Furama.repositories.IBookingRepository;
 import Furama.utils.ReadAndWrite;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class BookingRepository implements IBookingRepository {
@@ -22,6 +23,12 @@ public class BookingRepository implements IBookingRepository {
     public List<Booking> getList() {
         List<String> stringList = ReadAndWrite.read(FILE_BOOKING);
         List<Booking> bookings = convertToObject(stringList);
+        bookings.sort(new Comparator<Booking>() {
+            @Override
+            public int compare(Booking o1, Booking o2) {
+                return o1.getDayStart().compareTo(o2.getDayStart());
+            }
+        });
         return bookings;
     }
 

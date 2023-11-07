@@ -107,6 +107,7 @@ public class CustomerView {
 
     public void editCustomerV2() {
         List<Customer> customerList = customerController.getList();
+        System.out.println("Nhập ID cần sửa");
         String id = checkIdEditCustomer();
         int choice;
         for (Customer customer : customerList) {
@@ -164,9 +165,13 @@ public class CustomerView {
                         customerController.edit(id, customer);
                     } catch (NumberFormatException e) {
                         System.out.println("Vui lòng nhập số");
+                    } catch (Exception e) {
+                        System.out.println("Lỗi ngoại lệ không xác định");
                     }
+                    customerController.edit(id, customer);
                 } while (true);
             }
+            customerController.edit(id, customer);
         }
     }
 
@@ -235,13 +240,13 @@ public class CustomerView {
     public Customer addCustomer() {
         String idCustomer = inputIdCustomer();
         System.out.println("ID khách hàng của bạn là: " + idCustomer);
-        System.out.println("Nhập họ và tên khách hàng");
+        System.out.println("Nhập họ và tên khách hàng vd:Nguyen Minh Tuan");
         String name = validate.checkName();
-        System.out.println("Nhập birthday khách hàng");
+        System.out.println("Nhập birthday khách hàng dd/mm/yy");
         String birthday = validate.checkBirthday();
         System.out.println("Chọn giới tính");
-        String gender =validate.choiceGender();
-        System.out.println("Nhập số CCCD");
+        String gender = validate.choiceGender();
+        System.out.println("Nhập số CCCD 9 - 12 số");
         int idNumber = validate.idNumber();
         System.out.println("Nhập SDT");
         int phone = validate.checkPhone();
@@ -294,6 +299,8 @@ public class CustomerView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }

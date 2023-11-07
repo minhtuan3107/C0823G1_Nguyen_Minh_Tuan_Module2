@@ -52,6 +52,8 @@ public class EmployeeView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -137,6 +139,8 @@ public class EmployeeView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -170,6 +174,8 @@ public class EmployeeView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -215,6 +221,8 @@ public class EmployeeView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -279,6 +287,8 @@ public class EmployeeView {
                         employeeController.edit(idEdit, employee);
                     } catch (NumberFormatException e) {
                         System.out.println("Vui lòng nhập số");
+                    }catch (Exception e){
+                        System.out.println("Lỗi không xác định");
                     }
                 } while (true);
             }

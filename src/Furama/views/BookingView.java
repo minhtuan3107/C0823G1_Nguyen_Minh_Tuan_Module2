@@ -98,8 +98,9 @@ public class BookingView {
     public void displayContract() {
         List<Contract> contractList = contractController.getList();
         if (contractList.isEmpty()) {
-            System.out.println("DS trống");
+            System.out.println("Danh sách trống");
         } else {
+            System.out.println("Danh sách hợp đồng");
             for (Contract contract : contractList) {
                 System.out.println(contract);
             }
@@ -136,15 +137,20 @@ public class BookingView {
                     System.out.println("Vui lòng nhập lại");
                 }
             } catch (DateTimeParseException e) {
-                System.out.println("Vui lòng nhập đúng định dạng ngày tháng năm");
+                System.out.println("Vui lòng nhập đúng định dạng ngày tháng năm dd/mm/yy");
             }
         } while (true);
+    }
+
+    public String dayNow() {
+        String day = String.valueOf(LocalDate.now());
+        return day;
     }
 
     public Booking addBooking() {
         String id = upIdBooking();
         System.out.println("ID booking của bạn là: " + id);
-        String dateBooking = "03/11/2023";
+        String dateBooking = dayNow();
         System.out.println("Ngày booking là ngày hôm nay : " + dateBooking);
         System.out.println("Nhập ngày bắt đầu ");
         String dateStart = checkDayLive();
@@ -164,7 +170,7 @@ public class BookingView {
         }
         return booking;
     }
-    
+
 
     public String checkIdServiceLive() {
         Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
@@ -172,9 +178,9 @@ public class BookingView {
         int count = 0;
         String idService;
         if (facilityIntegerMap.isEmpty()) {
-            System.out.println("DS trống");
+            System.out.println("Danh sách trống");
         } else {
-            System.out.println("DS ID service");
+            System.out.println("Danh sách dịch vụ");
             for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
                 System.out.println(map.getKey());
             }
@@ -202,7 +208,7 @@ public class BookingView {
             } else if (count == 3) {
                 System.out.println("Dịch vụ đang cần được bảo trì vui lòng chọn dịch vụ khác");
             } else {
-                System.out.println("Không tìm thấy mã phòng");
+                System.out.println("Không tìm thấy mã dịch vụ");
             }
         } while (true);
     }
@@ -211,7 +217,7 @@ public class BookingView {
         List<Customer> customerList = customerController.getList();
         String idCustomer;
         if (customerList.isEmpty()) {
-            System.out.println("Ds trống ");
+            System.out.println("Danh sách khách hàng trống vui lòng thêm rồi thử lại ");
         } else {
             System.out.println("ID của customer");
             for (Customer customer : customerList) {
@@ -242,7 +248,7 @@ public class BookingView {
                     return id;
                 }
             }
-            System.out.println("Không tìm thấy ID");
+            System.out.println("Không tìm thấy ID vui lòng nhập lại");
         } while (true);
     }
 
@@ -272,8 +278,9 @@ public class BookingView {
     public void displayBooking() {
         List<Booking> bookings = bookingController.getList();
         if (bookings.isEmpty()) {
-            System.out.println("DS trống");
+            System.out.println("Danh sách trống");
         } else {
+            System.out.println("Danh sách booking");
             for (Booking booking : bookings) {
                 System.out.println(booking);
             }

@@ -14,18 +14,19 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public void edit(String id, Customer customer) {
         List<Customer> customerList = getList();
-        for (int i = 0; i < customerList.size(); i++) {
-            if (customerList.get(i).equals(id)) {
-                customerList.get(i).setId(customer.getId());
-                customerList.get(i).setName(customer.getName());
-                customerList.get(i).setBirthday(customer.getBirthday());
-                customerList.get(i).setGender(customer.getGender());
-                customerList.get(i).setIdNumber(customer.getIdNumber());
-                customerList.get(i).setPhone(customer.getPhone());
-                customerList.get(i).setEmail(customer.getEmail());
-                customerList.get(i).setType(customer.getType());
-                customerList.get(i).setAddress(customer.getAddress());
+        for (Customer customer1 : customerList) {
+            if (customer1.getId().equals(id)) {
+                customer1.setId(customer.getId());
+                customer1.setName(customer.getName());
+                customer1.setBirthday(customer.getBirthday());
+                customer1.setGender(customer.getGender());
+                customer1.setIdNumber(customer.getIdNumber());
+                customer1.setPhone(customer.getPhone());
+                customer1.setEmail(customer.getEmail());
+                customer1.setType(customer.getType());
+                customer1.setAddress(customer.getAddress());
                 ReadAndWrite.write(convertToString(customerList), FILE, false);
+                break;
             }
         }
     }

@@ -50,6 +50,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -84,6 +86,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -117,15 +121,15 @@ public class FacilityView {
     }
 
     public Room addRoom() {
-        System.out.println("Nhập ID room");
+        System.out.println("Nhập ID room vd SVRO-XXXX");
         String roomId = checkIdRoom();
         System.out.println("Nhập tên dịch vụ");
         String name = nameServiceCheck();
-        System.out.println("Nhập diện tích sử dụng");
+        System.out.println("Nhập diện tích sử dụng trên 30");
         int area = areaCheck();
-        System.out.println("Nhập chi phí thuê");
+        System.out.println("Nhập chi phí thuê ");
         int price = checkPrice();
-        System.out.println("Nhập số lượng người ở");
+        System.out.println("Nhập số lượng người ở dưới 20 người ");
         int people = checkPeople();
         System.out.println("Chọn kiểu thuê");
         String type = choiceType();
@@ -151,6 +155,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -178,6 +184,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -194,6 +202,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -210,6 +220,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -226,6 +238,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -275,6 +289,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -305,6 +321,8 @@ public class FacilityView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Vui lòng nhập số");
+            } catch (Exception e) {
+                System.out.println("Lỗi không xác định");
             }
         } while (true);
     }
@@ -347,7 +365,7 @@ public class FacilityView {
                     }
                 }
             } else {
-                System.out.println("Vui lòng nhập đúng định dạng SVVL-1");
+                System.out.println("Vui lòng nhập đúng định dạng SVVL-XXXX");
             }
             if (flag) {
                 return idCheck;
@@ -358,7 +376,7 @@ public class FacilityView {
     }
 
     public Villa addVilla() {
-        System.out.println("Nhập mã dịch vụ");
+        System.out.println("Nhập mã dịch vụ SVVL-XXXX");
         String id = checkIdVilla();
         System.out.println("Nhập tên dịch vụ");
         String name = nameServiceCheck();

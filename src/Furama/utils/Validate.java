@@ -35,10 +35,7 @@ public class Validate {
         } while (true);
     }
 
-    public String searchName() {
-        System.out.println("Nhap ten can tim");
-        return checkEmpty();
-    }
+
 
     public boolean patternMatches(String check, String regex) {
         return Pattern.compile(regex).matcher(check).matches();
@@ -126,7 +123,7 @@ public class Validate {
 
     public int checkPhone() {
         String phone;
-        String regexPhone = "^(0){1}[3|5|7|8|9]{1}[0-9]{8}$"; // ^84\+[3|5|7|9]{1}[1-9]{8}$
+        String regexPhone = "^0[3|5|7|8|9]{1}[0-9]{8}$"; // ^84\+[3|5|7|9]{1}[1-9]{8}$
         do {
             phone = checkEmpty();
             if (patternMatches(phone, regexPhone)) {

@@ -71,7 +71,7 @@ public class CustomerView {
 
 
     public void outputSearchCustomer() {
-        List<Customer> customerList = customerController.search(validate.searchName());
+        List<Customer> customerList = customerController.search(searchName());
         if (customerList.isEmpty()) {
             System.out.println("Không tìm thấy");
         } else {
@@ -314,5 +314,9 @@ public class CustomerView {
             text = Integer.parseInt(str[1]);
         }
         return "KH-" + (text + 1);
+    }
+    public String searchName() {
+        System.out.println("Nhap ten can tim");
+        return validate.checkEmpty();
     }
 }

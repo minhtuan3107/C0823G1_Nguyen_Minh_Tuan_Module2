@@ -40,7 +40,14 @@ public class EmployeeView {
                         choiceEditEmployee();
                         break;
                     case 4:
-                        employeeController.delete(inputIdDelete());
+                        System.out.println("Nhập ID cần xóa");
+                        String idDel = checkIdLive();
+                        if (checkStatus()) {
+                            employeeController.delete(idDel);
+                        } else {
+                            System.out.println("Bạn không sửa");
+                            break;
+                        }
                         break;
                     case 5:
                         outputSearchEmployee();
@@ -59,7 +66,7 @@ public class EmployeeView {
     }
 
     public void outputSearchEmployee() {
-        List<Employee> employees = employeeController.search(validate.searchName());
+        List<Employee> employees = employeeController.search(searchName());
         if (employees.isEmpty()) {
             System.out.println("Không tìm thấy");
         } else {
@@ -67,6 +74,11 @@ public class EmployeeView {
                 System.out.println(employee);
             }
         }
+    }
+
+    public String searchName() {
+        System.out.println("Nhap ten can tim");
+        return validate.checkEmpty();
     }
 
     public void displayEmployee() {
@@ -202,9 +214,9 @@ public class EmployeeView {
         int choice;
         do {
             try {
-                System.out.println("Chọn chức năng edit");
-                System.out.println("1. Edit tất cả");
-                System.out.println("2. Edit từng thứ");
+                System.out.println("Chọn chức năng sửa");
+                System.out.println("1. Chỉnh sửa tất cả");
+                System.out.println("2. Chỉnh sửa một phần ");
                 System.out.println("3. Thoát edit");
                 choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
@@ -229,20 +241,21 @@ public class EmployeeView {
 
     public void editEmployeeV1() {
         int choice;
-        String idEdit = checkIdEdit();
+        System.out.println("Nhập ID cần sửa");
+        String idEdit = checkIdLive();
         List<Employee> employees = employeeController.getList();
         for (Employee employee : employees) {
             if (employee.getId().equals(idEdit)) {
                 do {
                     try {
-                        System.out.println("1. Edit tên: " + employee.getName());
-                        System.out.println("2. Edit birthday: " + employee.getBirthday());
-                        System.out.println("3. Edit giới tính: " + employee.getGender());
-                        System.out.println("4. Edit CCCD: " + employee.getIdNumber());
-                        System.out.println("5. Edit Sdt: " + employee.getPhone());
-                        System.out.println("6. Edit Email: " + employee.getEmail());
-                        System.out.println("7. Edit trình độ: " + employee.getLevel());
-                        System.out.println("8. Edit vị trí làm việc: " + employee.getLocation());
+                        System.out.println("1. Sửa tên: " + employee.getName());
+                        System.out.println("2. Sửa birthday: " + employee.getBirthday());
+                        System.out.println("3. Sửa giới tính: " + employee.getGender());
+                        System.out.println("4. Sửa CCCD: " + employee.getIdNumber());
+                        System.out.println("5. Sửa Sdt: " + employee.getPhone());
+                        System.out.println("6. Sửa Email: " + employee.getEmail());
+                        System.out.println("7. Sửa trình độ: " + employee.getLevel());
+                        System.out.println("8. Sửa vị trí làm việc: " + employee.getLocation());
                         System.out.println("9. Thoát edit");
                         choice = Integer.parseInt(scanner.nextLine());
                         switch (choice) {
@@ -287,7 +300,7 @@ public class EmployeeView {
                         employeeController.edit(idEdit, employee);
                     } catch (NumberFormatException e) {
                         System.out.println("Vui lòng nhập số");
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         System.out.println("Lỗi không xác định");
                     }
                 } while (true);
@@ -296,7 +309,8 @@ public class EmployeeView {
     }
 
     public void editEmployee() {
-        String idEdit = checkIdEdit();
+        System.out.println("Nhập ID cần sửa");
+        String idEdit = checkIdLive();
         System.out.println("Nhập tên cần sửa");
         String name = validate.checkName();
         System.out.println("Nhập birthday cần sửa");
@@ -325,22 +339,22 @@ public class EmployeeView {
         }
     }
 
-    public String inputIdDelete() {
-        System.out.println("Nhập ID cần xóa");
-        String idDelete;
-        do {
-            idDelete = validate.checkEmpty();
-            if (!(checkIdInput(idDelete))) {
-                System.out.println("Bạn có muốn xóa không y/n");
-                if (checkStatus()) {
-                    System.out.println("Xóa thành công");
-                    return idDelete;
-                }
-            } else {
-                System.out.println("Vui long nhap lai ID khong ton tai tren he thong");
-            }
-        } while (true);
-    }
+//    public String inputIdDelete() {
+//        System.out.println("Nhập ID cần xóa");
+//        String idDelete;
+//        do {
+//            idDelete = validate.checkEmpty();
+//            if (!(checkIdInput(idDelete))) {
+//                System.out.println("Bạn có muốn xóa không y/n");
+//                if (checkStatus()) {
+//                    System.out.println("Xóa thành công");
+//                    return idDelete;
+//                }
+//            } else {
+//                System.out.println("Vui long nhap lai ID khong ton tai tren he thong");
+//            }
+//        } while (true);
+//    }
 
     public boolean checkIdInput(String id) {
         List<Employee> employeeList = employeeController.getList();
@@ -361,13 +375,12 @@ public class EmployeeView {
         }
     }
 
-    public String checkIdEdit() {
-        String idEdit;
+    public String checkIdLive() {
+        String id;
         do {
-            System.out.println("Nhập ID cần sửa");
-            idEdit = validate.checkEmpty();
-            if (!checkIdInput(idEdit)) {
-                return idEdit;
+            id = validate.checkEmpty();
+            if (!checkIdInput(id)) {
+                return id;
             } else {
                 System.out.println("Vui lòng nhập lại ID không tồn tại trên hệ thống");
             }

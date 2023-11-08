@@ -36,10 +36,11 @@ public class CustomerRepository implements ICustomerRepository {
         List<Customer> customerList = getList();
         for (Customer customer : customerList) {
             if (customer.getId().equals(id)) {
+                ReadAndWrite.write(convertToString(customerList), FILE, false);
                 customerList.remove(customer);
+                break;
             }
         }
-        ReadAndWrite.write(convertToString(customerList), FILE, false);
     }
 
     @Override

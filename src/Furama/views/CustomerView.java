@@ -40,7 +40,16 @@ public class CustomerView {
                         choiceEditCustomer();
                         break;
                     case 4:
-                        customerController.delete(deleteIdCustomer());
+                        System.out.println("Nhập ID cần xóa");
+                        String id = checkIdCustomerLive();
+                        System.out.println("Bạn có muốn xóa không? y/n");
+                        if (checkStatus()) {
+                            System.out.println("Xóa thành công");
+                            customerController.delete(id);
+                        } else {
+                            System.out.println("Bạn không xóa");
+                            return;
+                        }
                         break;
                     case 5:
                         outputSearchCustomer();
@@ -108,7 +117,7 @@ public class CustomerView {
     public void editCustomerV2() {
         List<Customer> customerList = customerController.getList();
         System.out.println("Nhập ID cần sửa");
-        String id = checkIdEditCustomer();
+        String id = checkIdCustomerLive();
         int choice;
         for (Customer customer : customerList) {
             if (customer.getId().equals(id)) {
@@ -177,7 +186,7 @@ public class CustomerView {
 
     public void editCustomer() {
         System.out.println("Nhập ID cần sửa");
-        String id = checkIdEditCustomer();
+        String id = checkIdCustomerLive();
         System.out.println("Nhập tên cần sửa");
         String name = validate.checkName();
         System.out.println("Nhập Birthday cần sửa");
@@ -213,18 +222,7 @@ public class CustomerView {
         }
     }
 
-    public String deleteIdCustomer() {
-        System.out.println("Nhập ID cần xóa");
-        String idDelete = checkIdEditCustomer();
-        System.out.println("Bạn có muốn xóa không y/n");
-        if (!checkStatus()) {
-            return idDelete;
-        }
-        System.out.println("Bạn không xóa");
-        return null;
-    }
-
-    public String checkIdEditCustomer() {
+    public String checkIdCustomerLive() {
         String id;
         do {
             id = validate.checkEmpty();
@@ -315,6 +313,7 @@ public class CustomerView {
         }
         return "KH-" + (text + 1);
     }
+
     public String searchName() {
         System.out.println("Nhap ten can tim");
         return validate.checkEmpty();

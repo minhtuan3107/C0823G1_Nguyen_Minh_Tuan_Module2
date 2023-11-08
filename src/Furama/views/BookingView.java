@@ -143,8 +143,7 @@ public class BookingView {
     }
 
     public String dayNow() {
-        String day = String.valueOf(LocalDate.now());
-        return day;
+        return String.valueOf(LocalDate.now());
     }
 
     public Booking addBooking() {
@@ -271,8 +270,7 @@ public class BookingView {
         String deposit = validate.checkEmpty();
         System.out.println("Nhập tổng tiền thanh toán");
         String price = validate.checkEmpty();
-        Contract contract = new Contract(id, idBooking, deposit, price);
-        return contract;
+        return new Contract(id, idBooking, deposit, price);
     }
 
     public void displayBooking() {

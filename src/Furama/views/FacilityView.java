@@ -9,7 +9,6 @@ import Furama.utils.Validate;
 
 import java.util.Map;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class FacilityView {
     private final FacilityController facilityController = new FacilityController();
@@ -92,37 +91,29 @@ public class FacilityView {
         } while (true);
     }
 
-    public String checkIdRoom() {
-        String idRoom;
-        String regexId = "^(SVRO-)+[0-9]{4}";
-        Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
-        boolean flag = false;
-        do {
-            idRoom = validate.checkEmpty();
-            if (patternMatches(idRoom, regexId)) {
-                for (Map.Entry<Facility, Integer> facilityIntegerEntry : facilityIntegerMap.entrySet()) {
-                    if (facilityIntegerEntry.getKey().getId().equals(idRoom)) {
-                        flag = true;
-                    }
-                }
-            } else {
-                System.out.println("Vui lòng nhập đúng định dạng SVRO-XXXX");
-            }
-            if (flag) {
-                return idRoom;
-            } else {
-                System.out.println("ID đã tồn tại trên hệ thống vui lòng nhập lại");
-            }
-        } while (true);
+    public String inputIdRoom() {
+        Map<Facility, Integer> facilityIntegerEntry = facilityController.getList();
+        int count = 0;
+        String[] str;
+        for (Map.Entry<Facility, Integer> map : facilityIntegerEntry.entrySet()) {
+            str = map.getKey().getId().split("-");
+            count = Integer.parseInt(str[1]);
+        }
+        if (count <= 9) {
+            return "SVRO-000" + (count + 1);
+        } else if (count <= 99) {
+            return "SVRO-00" + (count + 1);
+        } else if (count <= 999) {
+            return "SVRO-0" + (count + 1);
+        } else {
+            return "SVRO-" + (count + 1);
+        }
     }
 
-    public boolean patternMatches(String check, String regex) {
-        return Pattern.compile(regex).matcher(check).matches();
-    }
 
     public Room addRoom() {
-        System.out.println("Nhập ID room vd SVRO-XXXX");
-        String roomId = checkIdRoom();
+        String roomId = inputIdRoom();
+        System.out.println("ID dịch vụ room là : " + roomId);
         System.out.println("Nhập tên dịch vụ");
         String name = nameServiceCheck();
         System.out.println("Nhập diện tích sử dụng trên 30");
@@ -195,7 +186,7 @@ public class FacilityView {
         do {
             try {
                 people = Integer.parseInt(scanner.nextLine());
-                if (people > 1 && people < 20) {
+                if (people > 1 && people <= 20) {
                     return people;
                 } else {
                     System.out.println("Vui lòng nhập lớn hơn 0 và bé hơn 20");
@@ -249,7 +240,7 @@ public class FacilityView {
         String regexId = "^([A-Z])[a-z ]+$";
         do {
             nameCheck = validate.checkEmpty();
-            if (patternMatches(nameCheck, regexId)) {
+            if (validate.patternMatches(nameCheck, regexId)) {
                 return nameCheck;
             } else {
                 System.out.println("Vui lòng nhập đúng định dạng viết hoa kí tự đầu ");
@@ -258,9 +249,9 @@ public class FacilityView {
     }
 
     public House addHouse() {
-        System.out.println("Nhập mã dịch vụ House");
-        String idHouse = checkIdHouse();
-        System.out.println("Nhập tên dịch vụ");
+        String idHouse = inputIdHouse();
+        System.out.println("Mã dịch vụ của House là: " + idHouse);
+        System.out.println("Nhập tên dịch vụ House");
         String name = nameServiceCheck();
         System.out.println("Nhập diện tích sử dụng");
         int area = areaCheck();
@@ -282,7 +273,7 @@ public class FacilityView {
         do {
             try {
                 floor = Integer.parseInt(scanner.nextLine());
-                if (floor > 1) {
+                if (floor >= 1) {
                     return floor;
                 } else {
                     System.out.println("Vui lòng nhập số lớn hơn 1");
@@ -327,57 +318,49 @@ public class FacilityView {
         } while (true);
     }
 
-    public String checkIdHouse() {
-        String idHouse;
-        String regexId = "^(SVHO-)+[0-9]{4}";
+    public String inputIdHouse() {
         Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
-        boolean flag = false;
-        do {
-            idHouse = validate.checkEmpty();
-            if (patternMatches(idHouse, regexId)) {
-                for (Map.Entry<Facility, Integer> integerEntry : facilityIntegerMap.entrySet()) {
-                    if (integerEntry.getKey().getId().equals(idHouse)) {
-                        flag = true;
-                    }
-                }
-            } else {
-                System.out.println("Vui lòng nhập đúng định dạng SVHO-1");
-            }
-            if (flag) {
-                return idHouse;
-            } else {
-                System.out.println("Vui lòng nhập lại ID đã tồn tại trên hệ thống");
-            }
-        } while (true);
+        String[] str;
+        int count = 0;
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
+            str = map.getKey().getId().split("-");
+            count = Integer.parseInt(str[1]);
+        }
+        if (count <= 9) {
+            return "SVHO-000" + (count + 1);
+        } else if (count <= 99) {
+            return "SVHO-00" + (count + 1);
+        } else if (count <= 999) {
+            return "SVHO-0" + (count + 1);
+        } else {
+            return "SVVL-" + (count + 1);
+        }
     }
 
-    public String checkIdVilla() {
-        String idCheck;
-        String regexId = "^(SVVL-)+[0-9]{4}";
+
+    public String inputIdVilla() {
         Map<Facility, Integer> facilityIntegerMap = facilityController.getList();
-        boolean flag = false;
-        do {
-            idCheck = validate.checkEmpty();
-            if (patternMatches(idCheck, regexId)) {
-                for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
-                    if (map.getKey().getId().equals(idCheck)) {
-                        flag = true;
-                    }
-                }
-            } else {
-                System.out.println("Vui lòng nhập đúng định dạng SVVL-XXXX");
-            }
-            if (flag) {
-                return idCheck;
-            } else {
-                System.out.println("ID đã tồn tại trên hệ thống vui lòng nhập lại");
-            }
-        } while (true);
+        int count = 0;
+        String[] str;
+        for (Map.Entry<Facility, Integer> map : facilityIntegerMap.entrySet()) {
+            str = map.getKey().getId().split("-");
+            count = Integer.parseInt(str[1]);
+        }
+        if (count <= 9) {
+            return "SVVL-000" + (count + 1);
+        } else if (count <= 99) {
+            return "SVVL-00" + (count + 1);
+        } else if (count <= 999) {
+            return "SVVL-0" + (count + 1);
+        } else {
+            return "SVVL-" + (count + 1);
+        }
     }
+
 
     public Villa addVilla() {
-        System.out.println("Nhập mã dịch vụ SVVL-XXXX");
-        String id = checkIdVilla();
+        String id = inputIdVilla();
+        System.out.println("Villa sẽ có ID là:  " + id);
         System.out.println("Nhập tên dịch vụ");
         String name = nameServiceCheck();
         System.out.println("Nhập diện tích sử dụng");
@@ -442,9 +425,6 @@ public class FacilityView {
     public boolean confirm() {
         System.out.println("Bạn có muốn xóa không ? y/n");
         String check = scanner.nextLine();
-        if (check.equalsIgnoreCase("y")) {
-            return true;
-        }
-        return false;
+        return check.equalsIgnoreCase("y");
     }
 }

@@ -42,11 +42,13 @@ public class EmployeeView {
                     case 4:
                         System.out.println("Nhập ID cần xóa");
                         String idDel = checkIdLive();
+                        System.out.println("Bạn có muốn xóa không ? y/n");
                         if (checkStatus()) {
+                            System.out.println("Xóa thành công");
                             employeeController.delete(idDel);
                         } else {
-                            System.out.println("Bạn không sửa");
-                            break;
+                            System.out.println("Bạn không xóa");
+                            return;
                         }
                         break;
                     case 5:
@@ -339,22 +341,6 @@ public class EmployeeView {
         }
     }
 
-//    public String inputIdDelete() {
-//        System.out.println("Nhập ID cần xóa");
-//        String idDelete;
-//        do {
-//            idDelete = validate.checkEmpty();
-//            if (!(checkIdInput(idDelete))) {
-//                System.out.println("Bạn có muốn xóa không y/n");
-//                if (checkStatus()) {
-//                    System.out.println("Xóa thành công");
-//                    return idDelete;
-//                }
-//            } else {
-//                System.out.println("Vui long nhap lai ID khong ton tai tren he thong");
-//            }
-//        } while (true);
-//    }
 
     public boolean checkIdInput(String id) {
         List<Employee> employeeList = employeeController.getList();

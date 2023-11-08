@@ -121,7 +121,7 @@ public class FacilityRepository implements IFacilityRepository {
                 facilityIntegerMap.put(new Villa(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7]), Integer.parseInt(data[8])), Integer.parseInt(data[9]));
             } else if (data1[0].equals("SVHO")) {
                 facilityIntegerMap.put(new House(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6], Integer.parseInt(data[7])), Integer.parseInt(data[8]));
-            } else if (data1[0].equals("SVRO")) {
+            } else {
                 facilityIntegerMap.put(new Room(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]), Integer.parseInt(data[4]), data[5], data[6]), Integer.parseInt(data[7]));
             }
         }

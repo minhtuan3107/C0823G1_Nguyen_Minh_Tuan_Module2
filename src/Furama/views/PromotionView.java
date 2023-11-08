@@ -1,7 +1,7 @@
 package Furama.views;
 
 import Furama.controllers.PromotionController;
-import Furama.models.Customer;
+import Furama.models.person.Customer;
 import Furama.models.Promotion;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class PromotionView {
 
     public void showMenuPromotion() {
         System.out.println("1. Hiển thị danh sách khách hàng sử dụng dịch vụ");
-        System.out.println("2. Hiển thị danh sách khách hàng có voucher");
+        System.out.println("2. Hiển thị danh sách khách hàng có khuyến mãi");
         System.out.println("3. Trở về menu");
         System.out.println("Mời chọn");
     }
@@ -58,7 +58,7 @@ public class PromotionView {
     public Promotion addVoucher() {
         System.out.println("Nhập số lượng voucher");
         int count = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập voucher khuyến mãi");
+        System.out.println("Nhập voucher");
         String voucher = scanner.nextLine();
         Promotion promotion = new Promotion(count, voucher);
         return promotion;

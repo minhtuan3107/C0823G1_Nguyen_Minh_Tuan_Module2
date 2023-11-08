@@ -1,6 +1,6 @@
 package Furama.controllers;
 
-import Furama.models.Customer;
+import Furama.models.person.Customer;
 import Furama.models.Promotion;
 import Furama.services.IPromotionService;
 import Furama.services.impl.PromotionService;

@@ -1,6 +1,6 @@
 package Furama.repositories;
 
-import Furama.models.Employee;
+import Furama.models.person.Employee;
 
 import java.util.List;
 

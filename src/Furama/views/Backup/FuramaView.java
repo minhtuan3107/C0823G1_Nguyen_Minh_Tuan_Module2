@@ -2,6 +2,12 @@ package Furama.views.Backup;
 
 import Furama.controllers.*;
 import Furama.models.*;
+import Furama.models.facility.Facility;
+import Furama.models.facility.House;
+import Furama.models.facility.Room;
+import Furama.models.facility.Villa;
+import Furama.models.person.Customer;
+import Furama.models.person.Employee;
 
 import java.time.LocalDate;
 import java.time.Period;

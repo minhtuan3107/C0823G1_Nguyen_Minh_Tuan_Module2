@@ -1,6 +1,6 @@
 package Furama.services.impl;
 
-import Furama.models.Facility;
+import Furama.models.facility.Facility;
 import Furama.repositories.IFacilityRepository;
 import Furama.repositories.impl.FacilityRepository;
 import Furama.services.IFacilityService;

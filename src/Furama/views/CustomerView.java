@@ -1,7 +1,7 @@
 package Furama.views;
 
 import Furama.controllers.CustomerController;
-import Furama.models.Customer;
+import Furama.models.person.Customer;
 import Furama.utils.Validate;
 
 import java.util.List;
@@ -313,13 +313,22 @@ public class CustomerView {
 
     public String inputIdCustomer() {
         List<Customer> customerList = customerController.getList();
-        int text = 1000;
         String[] str;
+        int count = 0;
         for (Customer customer : customerList) {
             str = customer.getId().split("-");
-            text = Integer.parseInt(str[1]);
+            count = Integer.parseInt(str[1]);
         }
-        return "KH-" + (text + 1);
+        if (count <= 9) {
+            return "KH-000" + (count + 1);
+        } else if (count <= 99) {
+            return "KH-00" + (count + 1);
+        } else if (count <= 999) {
+            return "KH-0" + (count + 1);
+        } else {
+            return "KH-" + (count + 1);
+        }
+
     }
 
     public String searchName() {

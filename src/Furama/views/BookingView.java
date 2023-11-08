@@ -6,8 +6,8 @@ import Furama.controllers.CustomerController;
 import Furama.controllers.FacilityController;
 import Furama.models.Booking;
 import Furama.models.Contract;
-import Furama.models.Customer;
-import Furama.models.Facility;
+import Furama.models.facility.Facility;
+import Furama.models.person.Customer;
 import Furama.utils.Validate;
 
 import java.time.LocalDate;
@@ -115,13 +115,20 @@ public class BookingView {
     public String upIdBooking() {
         List<Booking> bookings = bookingController.getList();
         String[] line;
-        String text = null;
+        int count = 0;
         for (Booking booking : bookings) {
             line = booking.getId().split("-");
-            text = line[1];
+            count = Integer.parseInt(line[1]);
         }
-        int count = Integer.parseInt(text);
-        return "BK-" + (count + 1);
+        if (count <= 9) {
+            return "SVRO-000" + (count + 1);
+        } else if (count <= 99) {
+            return "BK-00" + (count + 1);
+        } else if (count <= 999) {
+            return "BK-0" + (count + 1);
+        } else {
+            return "BK-" + (count + 1);
+        }
     }
 
     public boolean checkDateValidate(String birthday) {
@@ -259,12 +266,20 @@ public class BookingView {
     public String upIdContract() {
         List<Contract> contractList = contractController.getList();
         String[] line;
-        String text = null;
+        int count = 0;
         for (Contract contract : contractList) {
             line = contract.getId().split("-");
-            text = line[1];
+            count = Integer.parseInt(line[1]);
         }
-        return "CT-" + Integer.parseInt(text + 1);
+        if (count <= 9) {
+            return "CT-000" + (count + 1);
+        } else if (count <= 99) {
+            return "CT-00" + (count + 1);
+        } else if (count <= 999) {
+            return "CT-0" + (count + 1);
+        } else {
+            return "CT-" + (count + 1);
+        }
     }
 
     public Contract addContract() {

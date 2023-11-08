@@ -4,8 +4,8 @@ import Furama.controllers.BookingController;
 import Furama.controllers.CustomerController;
 import Furama.controllers.FacilityController;
 import Furama.models.Booking;
-import Furama.models.Customer;
-import Furama.models.Facility;
+import Furama.models.person.Customer;
+import Furama.models.facility.Facility;
 import Furama.models.Promotion;
 import Furama.repositories.IPromotionRepository;
 

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c3d602e7-de8b-4194-9dfd-90777da7636a" name="Changes" comment="nop bai tap" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2d5d0b9f-e186-4eb3-8a12-a5c3b74d1d3d" />
+        <option name="url" value="https://github.com/minhtuan3107/C0823G1_Nguyen_Minh_Tuan_Module2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2WZ0OKKcLc7kMrUsBr8ByooFWpb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/module2Again&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\module2Again\src\ss17_binaryfile" />
+      <recent name="D:\module2Again\src\ss17_binaryfile\controllers" />
+      <recent name="D:\module2Again\src\ss14_sort" />
+      <recent name="D:\module2Again\src\ss13_search" />
+      <recent name="D:\module2Again\src\ss17_binary_file" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\module2Again\src" />
+      <recent name="D:\module2Again\src\Demo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ss17_binaryfile.controllers" />
+      <recent name="ss17_binaryfile.models" />
+      <recent name="ss17_binaryfile.views" />
+      <recent name="ss17_binaryfile" />
+      <recent name="ss15_exception.repositories.impl" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main12">
+    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Furama.Demo" />
+      <module name="module2Again" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuramaTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Furama.Main" type="Application" factoryName="Application" folderName="New Folder" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="C:\Program Files\Java\jdk1.8.0_251\jre" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Furama.Main" />
+      <selectedOptions>
+        <option name="environmentVariables" visible="false" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Furama.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FuramaTest.Main" />
+      <module name="module2Again" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuramaTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main12" type="Application" factoryName="Application" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Furama.Main1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Furama.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="case_studyTest.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="case_studyTest.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="case_studyTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="module2Again" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="module2Again" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Furama.Main" />
+      <item itemvalue="Application.Main12" />
+      <item itemvalue="Application.case_studyTest.Main" />
+      <item itemvalue="Application.Demo" />
+      <item itemvalue="Application.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main12" />
+        <item itemvalue="Application.Furama.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Demo" />
+        <item itemvalue="Application.case_studyTest.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3d602e7-de8b-4194-9dfd-90777da7636a" name="Changes" comment="" />
+      <created>1696924762963</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696924762963</updated>
+      <workItem from="1696924764137" duration="7673000" />
+      <workItem from="1696944274797" duration="659000" />
+      <workItem from="1696949175845" duration="1243000" />
+      <workItem from="1696992410911" duration="9854000" />
+      <workItem from="1697077961990" duration="5560000" />
+      <workItem from="1697083568214" duration="12695000" />
+      <workItem from="1697165309293" duration="11749000" />
+      <workItem from="1697455329310" duration="205000" />
+      <workItem from="1697469735409" duration="3000" />
+      <workItem from="1697511796672" duration="17246000" />
+      <workItem from="1697596784561" duration="7622000" />
+      <workItem from="1697610423470" duration="1220000" />
+      <workItem from="1697614981282" duration="16000" />
+      <workItem from="1697616664491" duration="267000" />
+      <workItem from="1697618186672" duration="841000" />
+      <workItem from="1697684258496" duration="3001000" />
+      <workItem from="1697687579247" duration="3945000" />
+      <workItem from="1697705180809" duration="3654000" />
+      <workItem from="1697770604863" duration="6872000" />
+      <workItem from="1697796000652" duration="1100000" />
+      <workItem from="1698028328666" duration="7820000" />
+      <workItem from="1698044052062" duration="22000" />
+      <workItem from="1698045230668" duration="89000" />
+      <workItem from="1698047138797" duration="1390000" />
+      <workItem from="1698116077903" duration="4349000" />
+      <workItem from="1698128677476" duration="1372000" />
+      <workItem from="1698130282985" duration="2714000" />
+      <workItem from="1698200616769" duration="6962000" />
+      <workItem from="1698217837876" duration="378000" />
+      <workItem from="1698223659516" duration="777000" />
+      <workItem from="1698225064499" duration="417000" />
+      <workItem from="1698225872703" duration="1135000" />
+      <workItem from="1698287142452" duration="5599000" />
+      <workItem from="1698295434708" duration="3140000" />
+      <workItem from="1698376261589" duration="11696000" />
+      <workItem from="1698397785165" duration="1057000" />
+      <workItem from="1698633925713" duration="6201000" />
+      <workItem from="1698647986969" duration="1270000" />
+      <workItem from="1698651462112" duration="869000" />
+      <workItem from="1698653185217" duration="274000" />
+      <workItem from="1698653473405" duration="1057000" />
+      <workItem from="1698655301067" duration="930000" />
+      <workItem from="1698658039322" duration="962000" />
+      <workItem from="1698719208400" duration="7189000" />
+      <workItem from="1698733757194" duration="5040000" />
+      <workItem from="1698746975949" duration="97000" />
+      <workItem from="1698806305374" duration="2422000" />
+      <workItem from="1698809186287" duration="696000" />
+      <workItem from="1698820883608" duration="3623000" />
+      <workItem from="1698892447494" duration="463000" />
+      <workItem from="1698894947327" duration="919000" />
+      <workItem from="1698897696135" duration="1934000" />
+      <workItem from="1698899662692" duration="740000" />
+      <workItem from="1698906638171" duration="11941000" />
+      <workItem from="1698978743680" duration="19013000" />
+      <workItem from="1699242367161" duration="506000" />
+      <workItem from="1699280522639" duration="2323000" />
+      <workItem from="1699286821622" duration="4076000" />
+      <workItem from="1699338474448" duration="12581000" />
+      <workItem from="1699406094081" duration="5657000" />
+      <workItem from="1699413249724" duration="22000" />
+      <workItem from="1699413281438" duration="38000" />
+      <workItem from="1699413330091" duration="115000" />
+      <workItem from="1699413458194" duration="9000" />
+      <workItem from="1699413532662" duration="107000" />
+      <workItem from="1699413661836" duration="55000" />
+      <workItem from="1699413765640" duration="52000" />
+      <workItem from="1699424970723" duration="68000" />
+      <workItem from="1699425042703" duration="31000" />
+      <workItem from="1699425318412" duration="314000" />
+      <workItem from="1699425637393" duration="29000" />
+      <workItem from="1699425669319" duration="155000" />
+      <workItem from="1699425856851" duration="86000" />
+    </task>
+    <task id="LOCAL-00001" summary="nop bai tap">
+      <created>1698653396385</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698653396385</updated>
+    </task>
+    <task id="LOCAL-00002" summary="nop bai tap">
+      <created>1698653512250</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698653512250</updated>
+    </task>
+    <task id="LOCAL-00003" summary="nop bai tap">
+      <created>1698808454296</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698808454296</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="nop bai tap" />
+    <option name="LAST_COMMIT_MESSAGE" value="nop bai tap" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ss13_search/controllers/SpendController.java</url>
+          <line>12</line>
+          <properties class="ss13_search.controllers.SpendController">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="java-method">
+          <url>file://$PROJECT_DIR$/src/ss13_search/repositories/ISpendRepository.java</url>
+          <line>7</line>
+          <properties class="ss13_search.repositories.ISpendRepository" method="add">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/FuramaTest/view/FuramaView.java</url>
+          <line>838</line>
+          <properties class="Furama.view.FuramaView">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/FuramaTest/view/FuramaView.java</url>
+          <line>649</line>
+          <properties class="Furama.view.FuramaView">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Furama/repositories/impl/FacilityRepository.java</url>
+          <line>112</line>
+          <properties class="Furama.repositories.impl.FacilityRepository" method="convertToE">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ss14_sort/utils/ReadAndWrite.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ss14_sort/utils/ReadAndWrite.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

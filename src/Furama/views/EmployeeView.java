@@ -1,7 +1,7 @@
 package Furama.views;
 
 import Furama.controllers.EmployeeController;
-import Furama.models.Employee;
+import Furama.models.person.Employee;
 import Furama.utils.Validate;
 
 import java.util.List;
@@ -129,14 +129,21 @@ public class EmployeeView {
 
     public String inputIdEmployee() {
         List<Employee> employees = employeeController.getList();
-        String text = null;
         String[] str;
+        int count = 0;
         for (Employee employee : employees) {
             str = employee.getId().split("-");
-            text = str[1];
+            count = Integer.parseInt(str[1]);
         }
-        int count = Integer.parseInt(text);
-        return "NV-" + (count + 1);
+        if (count <= 9) {
+            return "NV-000" + (count + 1);
+        } else if (count <= 99) {
+            return "NV-00" + (count + 1);
+        } else if (count <= 999) {
+            return "NV-0" + (count + 1);
+        } else {
+            return "NV-" + (count + 1);
+        }
     }
 
     public String choiceLevel() {

@@ -1,6 +1,6 @@
 package Furama.repositories.impl;
 
-import Furama.models.Employee;
+import Furama.models.person.Employee;
 import Furama.repositories.IEmployeeRepository;
 import Furama.utils.ReadAndWrite;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
     private final String COMMA = ",";
-    private final String FILE = "D:\\module2Again\\src\\Furama\\Utils\\DataEmployee.csv";
+    private final String FILE = "D:\\Module2.1\\src\\Furama\\Utils\\DataEmployee.csv";
 
     @Override
     public void edit(String id, Employee employee) {

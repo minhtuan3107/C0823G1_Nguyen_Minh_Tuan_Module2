@@ -7,4 +7,5 @@ public class Main1 {
         FuramaView furamaView = new FuramaView();
         furamaView.displayFurama();
     }
+
 }

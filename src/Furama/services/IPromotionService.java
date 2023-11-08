@@ -1,6 +1,6 @@
 package Furama.services;
 
-import Furama.models.Customer;
+import Furama.models.person.Customer;
 import Furama.models.Promotion;
 
 import java.util.List;

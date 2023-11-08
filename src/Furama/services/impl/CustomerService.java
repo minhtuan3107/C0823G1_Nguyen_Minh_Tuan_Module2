@@ -1,6 +1,6 @@
 package Furama.services.impl;
 
-import Furama.models.Customer;
+import Furama.models.person.Customer;
 import Furama.repositories.ICustomerRepository;
 import Furama.repositories.impl.CustomerRepository;
 import Furama.services.ICustomerService;

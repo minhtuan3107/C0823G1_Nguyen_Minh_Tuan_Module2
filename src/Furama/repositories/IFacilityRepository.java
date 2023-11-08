@@ -1,6 +1,6 @@
 package Furama.repositories;
 
-import Furama.models.Facility;
+import Furama.models.facility.Facility;
 
 import java.util.Map;
 

@@ -1,6 +1,6 @@
 package Furama.services.impl;
 
-import Furama.models.Employee;
+import Furama.models.person.Employee;
 import Furama.repositories.IEmployeeRepository;
 import Furama.repositories.impl.EmployeeRepository;
 import Furama.services.IEmployeeService;

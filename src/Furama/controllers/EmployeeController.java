@@ -1,6 +1,6 @@
 package Furama.controllers;
 
-import Furama.models.Employee;
+import Furama.models.person.Employee;
 import Furama.services.IEmployeeService;
 import Furama.services.impl.EmployeeService;
 

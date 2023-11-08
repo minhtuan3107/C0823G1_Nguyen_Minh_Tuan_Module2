@@ -1,9 +1,9 @@
 package Furama.repositories.impl;
 
-import Furama.models.Facility;
-import Furama.models.House;
-import Furama.models.Room;
-import Furama.models.Villa;
+import Furama.models.facility.Facility;
+import Furama.models.facility.House;
+import Furama.models.facility.Room;
+import Furama.models.facility.Villa;
 import Furama.repositories.IFacilityRepository;
 import Furama.utils.ReadAndWrite;
 
@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class FacilityRepository implements IFacilityRepository {
     private int count;
-    private final String FILE = "D:\\module2Again\\src\\Furama\\utils\\DataFacility.csv";
+    private final String FILE = "D:\\Module2.1\\src\\Furama\\utils\\DataFacility.csv";
     private final String COMMA = ",";
 
     public int getCount() {

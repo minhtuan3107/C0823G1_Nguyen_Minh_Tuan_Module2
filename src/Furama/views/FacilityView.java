@@ -1,10 +1,10 @@
 package Furama.views;
 
 import Furama.controllers.FacilityController;
-import Furama.models.Facility;
-import Furama.models.House;
-import Furama.models.Room;
-import Furama.models.Villa;
+import Furama.models.facility.Facility;
+import Furama.models.facility.House;
+import Furama.models.facility.Room;
+import Furama.models.facility.Villa;
 import Furama.utils.Validate;
 
 import java.util.Map;

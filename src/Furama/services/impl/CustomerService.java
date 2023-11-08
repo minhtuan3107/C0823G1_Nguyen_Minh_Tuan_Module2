@@ -16,8 +16,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void delete(String id) {
-        customerRepo.delete(id);
+    public boolean delete(String id) {
+        return customerRepo.delete(id);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void add(Customer customer) {
-        customerRepo.add(customer);
+    public boolean add(Customer customer) {
+        return customerRepo.add(customer);
     }
 
     @Override

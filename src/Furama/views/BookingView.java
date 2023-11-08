@@ -50,7 +50,12 @@ public class BookingView {
                         displayBooking();
                         break;
                     case 3:
-                        contractController.add(addContract());
+                        if (contractController.add(addContract())) {
+                            System.out.println("Thêm thành công");
+                        } else {
+                            System.out.println("Thêm không thành công vui lòng thử lại");
+                            return;
+                        }
                         break;
                     case 4:
                         displayContract();

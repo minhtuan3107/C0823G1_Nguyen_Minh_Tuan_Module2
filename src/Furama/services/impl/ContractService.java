@@ -11,8 +11,8 @@ public class ContractService implements IContractService {
     private final IContractRepository contractRepository = new ContractRepository();
 
     @Override
-    public void add(Contract contract) {
-        contractRepository.add(contract);
+    public boolean add(Contract contract) {
+        return contractRepository.add(contract);
     }
 
     @Override

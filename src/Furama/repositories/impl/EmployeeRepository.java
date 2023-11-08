@@ -32,15 +32,16 @@ public class EmployeeRepository implements IEmployeeRepository {
 
 
     @Override
-    public void delete(String id) {
+    public boolean delete(String id) {
         List<Employee> employees = getList();
         for (Employee employee : employees) {
             if (employee.getId().equals(id)) {
                 employees.remove(employee);
                 ReadAndWrite.write(convertToString(employees), FILE, false);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     @Override
@@ -63,10 +64,17 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public void add(Employee employee) {
-        List<Employee> employeeList = new ArrayList<>();
-        employeeList.add(employee);
-        ReadAndWrite.write(convertToString(employeeList), FILE, true);
+    public boolean add(Employee employee) {
+        List<Employee> employeeList = getList();
+        List<Employee> employeeList1 = new ArrayList<>();
+        for (Employee employee1 : employeeList) {
+            if (employee1.getId().equals(employee.getId())) {
+                return false;
+            }
+        }
+        employeeList1.add(employee);
+        ReadAndWrite.write(convertToString(employeeList1), FILE, true);
+        return true;
     }
 
     public List<String> convertToString(List<Employee> employeeList) {

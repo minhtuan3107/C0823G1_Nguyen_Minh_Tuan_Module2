@@ -13,8 +13,8 @@ public class EmployeeController {
         employeeService.edit(id, employee);
     }
 
-    public void delete(String id) {
-        employeeService.delete(id);
+    public boolean delete(String id) {
+        return employeeService.delete(id);
     }
 
     public List<Employee> search(String name) {
@@ -25,7 +25,7 @@ public class EmployeeController {
         return employeeService.getList();
     }
 
-    public void add(Employee employee) {
-        employeeService.add(employee);
+    public boolean add(Employee employee) {
+        return employeeService.add(employee);
     }
 }

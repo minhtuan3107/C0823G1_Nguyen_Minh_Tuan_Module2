@@ -9,8 +9,8 @@ import java.util.List;
 public class ContractController {
     private final IContractService contractService = new ContractService();
 
-    public void add(Contract contract) {
-        contractService.add(contract);
+    public boolean add(Contract contract) {
+        return contractService.add(contract);
     }
 
     public void edit(String id, Contract contract) {

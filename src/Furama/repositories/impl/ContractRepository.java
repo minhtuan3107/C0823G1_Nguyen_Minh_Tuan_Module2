@@ -12,10 +12,17 @@ public class ContractRepository implements IContractRepository {
     private final String FILE = "D:\\module2Again\\src\\Furama\\utils\\DataContract.csv";
 
     @Override
-    public void add(Contract contract) {
-        List<Contract> contractList = new ArrayList<>();
-        contractList.add(contract);
-        ReadAndWrite.write(convertToString(contractList), FILE, true);
+    public boolean add(Contract contract) {
+        List<Contract> contractList = getList();
+        for (Contract contract1 : contractList) {
+            if (contract1.getId().equals(contract.getId())) {
+                return false;
+            }
+        }
+        List<Contract> contractList1 = new ArrayList<>();
+        contractList1.add(contract);
+        ReadAndWrite.write(convertToString(contractList1), FILE, true);
+        return true;
     }
 
     @Override
@@ -32,8 +39,8 @@ public class ContractRepository implements IContractRepository {
 
     @Override
     public List<Contract> getList() {
-        List<String>stringList = ReadAndWrite.read(FILE);
-        List<Contract>contractList = convertToObject(stringList);
+        List<String> stringList = ReadAndWrite.read(FILE);
+        List<Contract> contractList = convertToObject(stringList);
         return contractList;
     }
 

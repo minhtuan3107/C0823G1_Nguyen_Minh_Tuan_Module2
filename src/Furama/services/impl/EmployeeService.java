@@ -16,8 +16,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public void delete(String id) {
-        employeeRepo.delete(id);
+    public boolean delete(String id) {
+        return employeeRepo.delete(id);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public void add(Employee employee) {
-        employeeRepo.add(employee);
+    public boolean add(Employee employee) {
+        return employeeRepo.add(employee);
     }
 }

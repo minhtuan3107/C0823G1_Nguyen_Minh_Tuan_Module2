@@ -34,7 +34,11 @@ public class CustomerView {
                         displayCustomer();
                         break;
                     case 2:
-                        customerController.add(addCustomer());
+                        if (customerController.add(addCustomer())) {
+                            System.out.println("Thêm thành công");
+                        } else {
+                            System.out.println("Thêm không thành công vui lòng thử lại");
+                        }
                         break;
                     case 3:
                         choiceEditCustomer();
@@ -44,8 +48,12 @@ public class CustomerView {
                         String id = checkIdCustomerLive();
                         System.out.println("Bạn có muốn xóa không? y/n");
                         if (checkStatus()) {
-                            System.out.println("Xóa thành công");
-                            customerController.delete(id);
+                            if (customerController.delete(id)) {
+                                System.out.println("Xóa thành công");
+                            } else {
+                                System.out.println("Xóa không thành công vui lòng thử lại");
+                                return;
+                            }
                         } else {
                             System.out.println("Bạn không xóa");
                             return;

@@ -34,7 +34,12 @@ public class EmployeeView {
                         displayEmployee();
                         break;
                     case 2:
-                        employeeController.add(addEmployee());
+                        if (employeeController.add(addEmployee())) {
+                            System.out.println("Thêm thành công");
+                        } else {
+                            System.out.println("Thêm không thành công vui lòng thử lại");
+                            return;
+                        }
                         break;
                     case 3:
                         choiceEditEmployee();
@@ -44,8 +49,12 @@ public class EmployeeView {
                         String idDel = checkIdLive();
                         System.out.println("Bạn có muốn xóa không ? y/n");
                         if (checkStatus()) {
-                            System.out.println("Xóa thành công");
-                            employeeController.delete(idDel);
+                            if (employeeController.delete(idDel)) {
+                                System.out.println("Xóa thành công");
+                            } else {
+                                System.out.println("Xóa không thành công vui lòng thử lại");
+                                return;
+                            }
                         } else {
                             System.out.println("Bạn không xóa");
                             return;

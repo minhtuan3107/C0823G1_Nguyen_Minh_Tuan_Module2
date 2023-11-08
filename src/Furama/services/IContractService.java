@@ -5,7 +5,7 @@ import Furama.models.Contract;
 import java.util.List;
 
 public interface IContractService {
-    void add(Contract contract);
+    boolean add(Contract contract);
 
     void edit(String id, Contract contract);
 

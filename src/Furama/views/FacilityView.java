@@ -333,7 +333,7 @@ public class FacilityView {
         } else if (count <= 999) {
             return "SVHO-0" + (count + 1);
         } else {
-            return "SVVL-" + (count + 1);
+            return "SVHO-" + (count + 1);
         }
     }
 

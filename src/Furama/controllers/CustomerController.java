@@ -13,16 +13,16 @@ public class CustomerController {
         customerService.edit(id, customer);
     }
 
-    public void delete(String id) {
-        customerService.delete(id);
+    public boolean delete(String id) {
+        return customerService.delete(id);
     }
 
     public List<Customer> search(String name) {
         return customerService.search(name);
     }
 
-    public void add(Customer customer) {
-        customerService.add(customer);
+    public boolean add(Customer customer) {
+        return customerService.add(customer);
     }
 
     public List<Customer> getList() {
